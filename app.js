@@ -4,6 +4,9 @@ import express from 'express';
 import path from 'path';
 import bodyParser from 'body-parser';
 import dotenv from 'dotenv';
+import validator from 'express-validator';
+
+import routes from './server/routes';
 
 dotenv.config();
 
@@ -15,6 +18,9 @@ const HTML_FILE = path.join(BUILD_DIR, 'index.html');
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(validator());
+
+app.use('/', routes);
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(BUILD_DIR));
