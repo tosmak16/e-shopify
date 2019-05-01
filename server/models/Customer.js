@@ -62,8 +62,8 @@ const attributes = {
   },
   shipping_region_id: {
     type: DataTypes.INTEGER,
-    allowNull: false,
-    default: '1'
+    allowNull: true,
+    default: 1
   }
 };
 
