@@ -9,7 +9,7 @@ const searchProducts = async (req, res) => {
     return res.status(400).send({
       error: {
         status: 400,
-        code: 'PROD_02',
+        code: 'PRO_02',
         message: `The param query_string is required`,
         field: 'query_string'
       }
