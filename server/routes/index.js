@@ -18,10 +18,11 @@ import {
   updateCustomerCreditCard
 } from '../controllers/customers';
 
-import { getProducts } from '../controllers/products';
+import { getProducts, searchProducts } from '../controllers/products';
 
 const router = express.Router();
 
+// ************Customers routes *********** //
 router.post('/customers', validateSignUpData, signUp);
 router.post('/customers/login', validateLoginData, signIn);
 router.get('/customer', tokenAuthMiddleware, getCustomer);
@@ -39,6 +40,8 @@ router.put(
   updateCustomerCreditCard
 );
 
+// ********* */ Products routes ************ //
 router.get('/products', normalizePaginationParams, getProducts);
+router.get('/products/search', normalizePaginationParams, searchProducts);
 
 export default router;

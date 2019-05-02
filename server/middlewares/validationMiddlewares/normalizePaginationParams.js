@@ -1,7 +1,7 @@
 import { isUndefined } from 'lodash';
 
 const normalizePaginationParams = (req, res, next) => {
-  const { page, limit, description_length } = req.query;
+  const { page, limit, description_length, all_words, query_string } = req.query;
   const defaultPage = 0;
   const defaultLimit = 20;
 
@@ -13,10 +13,15 @@ const normalizePaginationParams = (req, res, next) => {
       ? description_length
       : 200;
 
+  const queryString = isUndefined(query_string) ? '' : query_string;
+  const allWords = isUndefined(all_words) ? 'on' : all_words;
+
   req.normalizePaginationParams = {
     offset: normalizedOffset,
     limit: normalizedLimit,
-    descriptionLength
+    descriptionLength,
+    queryString,
+    allWords
   };
   next();
 };
