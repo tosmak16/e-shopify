@@ -18,7 +18,7 @@ import {
   updateCustomerCreditCard
 } from '../controllers/customers';
 
-import { getProducts, searchProducts } from '../controllers/products';
+import { getProducts, searchProducts, getSingleProduct } from '../controllers/products';
 
 const router = express.Router();
 
@@ -43,5 +43,6 @@ router.put(
 // ********* */ Products routes ************ //
 router.get('/products', normalizePaginationParams, getProducts);
 router.get('/products/search', normalizePaginationParams, searchProducts);
+router.get('/productS/:Id', getSingleProduct);
 
 export default router;
