@@ -17,6 +17,8 @@ import {
   updateCustomerCreditCard
 } from '../controllers/customers';
 
+import { getProducts } from '../controllers/products';
+
 const router = express.Router();
 
 router.post('/customers', validateSignUpData, signUp);
@@ -35,5 +37,7 @@ router.put(
   validateUpdateCustomerCreditCardData,
   updateCustomerCreditCard
 );
+
+router.get('/products', getProducts);
 
 export default router;
