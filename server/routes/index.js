@@ -6,7 +6,8 @@ import {
   validateLoginData,
   validateUpdateCustomerData,
   validateUpdateCustomerAddressData,
-  validateUpdateCustomerCreditCardData
+  validateUpdateCustomerCreditCardData,
+  normalizePaginationParams
 } from '../middlewares/validationMiddlewares';
 import {
   signIn,
@@ -38,6 +39,6 @@ router.put(
   updateCustomerCreditCard
 );
 
-router.get('/products', getProducts);
+router.get('/products', normalizePaginationParams, getProducts);
 
 export default router;
