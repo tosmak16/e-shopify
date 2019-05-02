@@ -30,7 +30,8 @@ class CustomerService {
       postal_code,
       shipping_region_id,
       country,
-      region
+      region,
+      credit_card
     } = newCustormerData;
 
     await customer.update({
@@ -46,7 +47,8 @@ class CustomerService {
       region: region || customer.region,
       postal_code: postal_code || customer.postal_code,
       country: country || customer.country,
-      shipping_region_id: shipping_region_id || customer.shipping_region_id
+      shipping_region_id: shipping_region_id || customer.shipping_region_id,
+      credit_card: credit_card || customer.credit_card
     });
 
     return customer;

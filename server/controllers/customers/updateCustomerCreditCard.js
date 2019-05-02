@@ -1,7 +1,7 @@
 import CustomerService from '../../services/database/CustomerService';
 import normalizeCustomerData from '../../utils/normalizeCustomerData';
 
-const updateCustomerAddress = async (req, res) => {
+const updateCustomerCreditCard = async (req, res) => {
   const { customer_id } = req.decoded;
   const fetchedCustomer = await CustomerService.findById(customer_id);
 
@@ -23,4 +23,4 @@ const updateCustomerAddress = async (req, res) => {
   return res.status(200).send(customer);
 };
 
-export default updateCustomerAddress;
+export default updateCustomerCreditCard;
