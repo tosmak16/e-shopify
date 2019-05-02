@@ -5,14 +5,16 @@ import {
   validateSignUpData,
   validateLoginData,
   validateUpdateCustomerData,
-  validateUpdateCustomerAddressData
+  validateUpdateCustomerAddressData,
+  validateUpdateCustomerCreditCardData
 } from '../middlewares/validationMiddlewares';
 import {
   signIn,
   signUp,
   getCustomer,
   updateCustomer,
-  updateCustomerAddress
+  updateCustomerAddress,
+  updateCustomerCreditCard
 } from '../controllers/customers';
 
 const router = express.Router();
@@ -22,10 +24,16 @@ router.post('/customers/login', validateLoginData, signIn);
 router.get('/customer', tokenAuthMiddleware, getCustomer);
 router.put('/customer', tokenAuthMiddleware, validateUpdateCustomerData, updateCustomer);
 router.put(
-  '/customer/address',
+  '/customers/address',
   tokenAuthMiddleware,
   validateUpdateCustomerAddressData,
   updateCustomerAddress
+);
+router.put(
+  '/customers/creditCard',
+  tokenAuthMiddleware,
+  validateUpdateCustomerCreditCardData,
+  updateCustomerCreditCard
 );
 
 export default router;
