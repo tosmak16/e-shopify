@@ -24,7 +24,8 @@ import {
   getSingleProduct,
   getProductsByCategory,
   getProductsByDepartment,
-  getProductDetails
+  getProductDetails,
+  getProductLocation
 } from '../controllers/products';
 
 const router = express.Router();
@@ -54,5 +55,6 @@ router.get('/products/:id', getSingleProduct);
 router.get('/products/inCategory/:id', normalizePaginationParams, getProductsByCategory);
 router.get('/products/inDepartment/:id', normalizePaginationParams, getProductsByDepartment);
 router.get('/products/:id/details', getProductDetails);
+router.get('/products/:id/locations', getProductLocation);
 
 export default router;
