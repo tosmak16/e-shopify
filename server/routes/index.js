@@ -23,7 +23,8 @@ import {
   searchProducts,
   getSingleProduct,
   getProductsByCategory,
-  getProductsByDepartment
+  getProductsByDepartment,
+  getProductDetails
 } from '../controllers/products';
 
 const router = express.Router();
@@ -52,5 +53,6 @@ router.get('/products/search', normalizePaginationParams, searchProducts);
 router.get('/products/:id', getSingleProduct);
 router.get('/products/inCategory/:id', normalizePaginationParams, getProductsByCategory);
 router.get('/products/inDepartment/:id', normalizePaginationParams, getProductsByDepartment);
+router.get('/products/:id/details', getProductDetails);
 
 export default router;
