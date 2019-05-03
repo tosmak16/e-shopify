@@ -2,7 +2,7 @@ import { Customer } from '../../db';
 
 class CustomerService {
   static async create(modelData) {
-    const result = await Customer.create({ ...modelData });
+    const result = await Customer.create(modelData);
     return result;
   }
 

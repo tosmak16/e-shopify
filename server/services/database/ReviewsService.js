@@ -1,6 +1,11 @@
 import { Review } from '../../db';
 
 class ReviewsService {
+  static async create(modelData) {
+    const result = await Review.create(modelData);
+    return result;
+  }
+
   static async findBy(modelData = {}) {
     const result = await Review.findAll(modelData);
     return result;
