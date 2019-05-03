@@ -1,6 +1,7 @@
 import { Op } from 'sequelize';
 
 import handleFetchProducts from '../../utils/handleFetchProducts';
+import ProductService from '../../services/database/ProductService';
 
 const searchProducts = async (req, res) => {
   const { offset, limit, descriptionLength, queryString, allWords } = req.normalizePaginationParams;
@@ -28,7 +29,8 @@ const searchProducts = async (req, res) => {
   };
   const products = await handleFetchProducts(
     { where: filterConditions, offset, limit },
-    descriptionLength
+    descriptionLength,
+    ProductService
   );
 
   return res.status(200).send(products);
