@@ -6,6 +6,7 @@ import getProductsByDepartment from './getProductsByDepartment';
 import getProductDetails from './getProductDetails';
 import getProductLocation from './getProductLocation';
 import getProductReviews from './getProductReviews';
+import addProductReviews from './addProductReviews';
 
 export {
   getProducts,
@@ -15,5 +16,6 @@ export {
   getProductsByDepartment,
   getProductDetails,
   getProductLocation,
-  getProductReviews
+  getProductReviews,
+  addProductReviews
 };

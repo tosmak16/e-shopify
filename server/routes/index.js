@@ -7,7 +7,8 @@ import {
   validateUpdateCustomerData,
   validateUpdateCustomerAddressData,
   validateUpdateCustomerCreditCardData,
-  normalizePaginationParams
+  normalizePaginationParams,
+  validateAddProductReviewsData
 } from '../middlewares/validationMiddlewares';
 import {
   signIn,
@@ -26,7 +27,8 @@ import {
   getProductsByDepartment,
   getProductDetails,
   getProductLocation,
-  getProductReviews
+  getProductReviews,
+  addProductReviews
 } from '../controllers/products';
 
 const router = express.Router();
@@ -58,5 +60,11 @@ router.get('/products/inDepartment/:id', normalizePaginationParams, getProductsB
 router.get('/products/:id/details', getProductDetails);
 router.get('/products/:id/locations', getProductLocation);
 router.get('/products/:id/reviews', getProductReviews);
+router.post(
+  '/products/:id/reviews',
+  tokenAuthMiddleware,
+  validateAddProductReviewsData,
+  addProductReviews
+);
 
 export default router;
