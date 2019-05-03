@@ -1,14 +1,15 @@
 import handleFetchProducts from '../../utils/handleFetchProducts';
-import ProducCategoryService from '../../services/database/ProducCategoryService';
+import ProductService from '../../services/database/ProductService';
+import productsInCategoryQuery from '../../queries/productsInCategoryQuery';
 
 const getProductsByCategory = async (req, res) => {
   const { offset, limit, descriptionLength } = req.normalizePaginationParams;
   const { id } = req.params;
 
   const products = await handleFetchProducts(
-    { offset, limit, category_id: id },
+    productsInCategoryQuery({ offset, limit, category_id: id }),
     descriptionLength,
-    ProducCategoryService
+    ProductService
   );
 
   return res.status(200).send(products);
