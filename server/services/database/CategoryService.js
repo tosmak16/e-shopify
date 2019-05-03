@@ -1,8 +1,8 @@
 import { Category } from '../../db';
 
 class CategoryService {
-  static async findById(id) {
-    const result = await Category.findByPk(id);
+  static async findById(id, filterConditions = {}) {
+    const result = await Category.findByPk(id, filterConditions);
     return result;
   }
 
