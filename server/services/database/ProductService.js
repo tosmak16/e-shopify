@@ -10,6 +10,11 @@ class ProductService {
     const result = await Product.findByPk(id);
     return result;
   }
+
+  static async findOneBy(modelData) {
+    const result = await Product.findOne(modelData);
+    return result;
+  }
 }
 
 export default ProductService;
