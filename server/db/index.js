@@ -43,6 +43,9 @@ Department.hasMany(Category, { foreignKey: 'department_id' });
 Category.belongsToMany(Product, { through: 'product_category' });
 Product.belongsToMany(Category, { through: 'product_category' });
 
+ProductCategory.hasMany(Product, { foreignKey: 'product_id' });
+Product.belongsTo(ProductCategory, { foreignKey: 'product_id' });
+
 AttributeValue.belongsTo(Attribute, { foreignKey: 'attribute_id' });
 Attribute.hasMany(AttributeValue, { foreignKey: 'attribute_id' });
 

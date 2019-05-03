@@ -1,7 +1,7 @@
 import ProductService from '../../services/database/ProductService';
 
 const getSingleProduct = async (req, res) => {
-  const product = await ProductService.findById(req.params.Id);
+  const product = await ProductService.findById(req.params.id);
 
   if (product === null) {
     return res.status(400).send({

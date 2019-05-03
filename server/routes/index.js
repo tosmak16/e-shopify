@@ -18,7 +18,12 @@ import {
   updateCustomerCreditCard
 } from '../controllers/customers';
 
-import { getProducts, searchProducts, getSingleProduct } from '../controllers/products';
+import {
+  getProducts,
+  searchProducts,
+  getSingleProduct,
+  getProductsByCategory
+} from '../controllers/products';
 
 const router = express.Router();
 
@@ -43,6 +48,7 @@ router.put(
 // ********* */ Products routes ************ //
 router.get('/products', normalizePaginationParams, getProducts);
 router.get('/products/search', normalizePaginationParams, searchProducts);
-router.get('/productS/:Id', getSingleProduct);
+router.get('/products/:id', getSingleProduct);
+router.get('/products/inCategory/:id', normalizePaginationParams, getProductsByCategory);
 
 export default router;
