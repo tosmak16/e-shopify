@@ -3,7 +3,7 @@ import productReviewsQuery from '../../queries/productReviewsQuery';
 import normalizeProductReviewData from '../../utils/normalizeProductReviewData';
 
 const getProductReviews = async (req, res) => {
-  const reviews = await ReviewsService.findBy(productReviewsQuery(req.params.id));
+  const reviews = await ReviewsService.findAllBy(productReviewsQuery(req.params.id));
   if (reviews.length === 0) {
     return res.status(400).send({
       error: {

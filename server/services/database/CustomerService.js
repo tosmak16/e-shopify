@@ -6,7 +6,7 @@ class CustomerService {
     return result;
   }
 
-  static async findBy(modelData) {
+  static async findOneBy(modelData) {
     const result = await Customer.findOne({ where: { ...modelData } });
     return result;
   }

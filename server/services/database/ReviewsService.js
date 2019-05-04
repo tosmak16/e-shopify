@@ -6,7 +6,7 @@ class ReviewsService {
     return result;
   }
 
-  static async findBy(modelData = {}) {
+  static async findAllBy(modelData = {}) {
     const result = await Review.findAll(modelData);
     return result;
   }
