@@ -8,7 +8,7 @@ dotenv.config();
 
 const signUp = async (req, res) => {
   const { email, name, password } = req.body;
-  const result = await CustomerService.findBy({ email });
+  const result = await CustomerService.findOneBy({ email });
   if (result !== null) {
     return res.status(400).send({
       error: {

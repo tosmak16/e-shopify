@@ -18,7 +18,7 @@ const updateCustomer = async (req, res) => {
   }
 
   if (email !== fetchedCustomer.email) {
-    const result = await CustomerService.findBy({ email });
+    const result = await CustomerService.findOneBy({ email });
     if (result !== null) {
       return res.status(400).send({
         error: {

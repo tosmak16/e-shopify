@@ -31,6 +31,8 @@ import {
   addProductReviews
 } from '../controllers/products';
 
+import { getDepartments, getSingleDepartment } from '../controllers/departments';
+
 const router = express.Router();
 
 // ************Customers routes *********** //
@@ -66,5 +68,9 @@ router.post(
   validateAddProductReviewsData,
   addProductReviews
 );
+
+// ********* */ Departments routes ************ //
+router.get('/departments', getDepartments);
+router.get('/departments/:id', getSingleDepartment);
 
 export default router;

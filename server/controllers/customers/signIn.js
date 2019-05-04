@@ -9,7 +9,7 @@ dotenv.config();
 const signIn = async (req, res) => {
   const { email, password } = req.body;
 
-  const isEmailExist = await CustomerService.findBy({ email });
+  const isEmailExist = await CustomerService.findOneBy({ email });
   if (isEmailExist === null) {
     return res.status(400).send({
       error: {
@@ -21,7 +21,7 @@ const signIn = async (req, res) => {
     });
   }
 
-  const fetchedCustomer = await CustomerService.findBy({ email, password });
+  const fetchedCustomer = await CustomerService.findOneBy({ email, password });
   if (fetchedCustomer === null) {
     return res.status(400).send({
       error: {
