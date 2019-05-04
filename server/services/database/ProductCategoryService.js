@@ -10,6 +10,11 @@ class ProductCategoryService {
     const result = await ProductCategory.findOne(modelData);
     return result;
   }
+
+  static async findAllBy(modelData = {}) {
+    const result = await ProductCategory.findAll(modelData);
+    return result;
+  }
 }
 
 export default ProductCategoryService;
