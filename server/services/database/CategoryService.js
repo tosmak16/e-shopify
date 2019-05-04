@@ -6,7 +6,7 @@ class CategoryService {
     return result;
   }
 
-  static async findAllBy(modelData) {
+  static async findAllBy(modelData = {}) {
     const result = await Category.findAll(modelData);
     return result;
   }

@@ -32,6 +32,12 @@ import {
 } from '../controllers/products';
 
 import { getDepartments, getSingleDepartment } from '../controllers/departments';
+import {
+  getCategories,
+  getSingleCategory,
+  getCategoriesInProduct,
+  getCategoriesInDepartment
+} from '../controllers/categories';
 
 const router = express.Router();
 
@@ -72,5 +78,11 @@ router.post(
 // ********* */ Departments routes ************ //
 router.get('/departments', getDepartments);
 router.get('/departments/:id', getSingleDepartment);
+
+// ********* */ Categories routes ************ //
+router.get('/categories', normalizePaginationParams, getCategories);
+router.get('/categories/:id', getSingleCategory);
+router.get('/categories/inProduct/:id', getCategoriesInProduct);
+router.get('/categories/inDepartment/:id', getCategoriesInDepartment);
 
 export default router;
