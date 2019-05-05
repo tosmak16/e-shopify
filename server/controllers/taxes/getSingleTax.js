@@ -2,7 +2,6 @@ import TaxService from '../../services/database/TaxService';
 
 const getTaxes = async (req, res) => {
   const tax_id = req.params.id;
-  console.log(tax_id);
   const tax = await TaxService.findById(tax_id);
 
   if (tax === null) {

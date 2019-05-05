@@ -49,6 +49,8 @@ import {
 
 import { getTaxes, getSingleTax } from '../controllers/taxes';
 
+import { getShippingRegions, getSingleShippingRegion } from '../controllers/shippingRegions';
+
 const router = express.Router();
 
 // ************Customers routes *********** //
@@ -104,5 +106,9 @@ router.get('/attributes/inProduct/:id', getAttributeByProduct);
 // ********* */ Tax routes ************ //
 router.get('/tax', getTaxes);
 router.get('/tax/:id', getSingleTax);
+
+// ********* */ Shipping Region routes ************ //
+router.get('/shipping/regions', getShippingRegions);
+router.get('/shipping/regions/:id', getSingleShippingRegion);
 
 export default router;
