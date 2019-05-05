@@ -47,6 +47,8 @@ import {
   getAttributeByProduct
 } from '../controllers/attributes';
 
+import { getTaxes, getSingleTax } from '../controllers/taxes';
+
 const router = express.Router();
 
 // ************Customers routes *********** //
@@ -98,5 +100,9 @@ router.get('/attributes', getAttributes);
 router.get('/attributes/:id', getSingleAttributes);
 router.get('/attributes/values/:id', getAttributeValues);
 router.get('/attributes/inProduct/:id', getAttributeByProduct);
+
+// ********* */ Tax routes ************ //
+router.get('/tax', getTaxes);
+router.get('/tax/:id', getSingleTax);
 
 export default router;
