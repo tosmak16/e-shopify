@@ -5,6 +5,8 @@ import validateUpdateCustomerAddressData from './validateUpdateCustomerAddressDa
 import validateUpdateCustomerCreditCardData from './validateUpdateCustomerCreditCardData';
 import normalizePaginationParams from './normalizePaginationParams';
 import validateAddProductReviewsData from './validateAddProductReviewsData';
+import validateProductInCartData from './validateProductInCartData';
+import validateUpdateItemInCartData from './validateUpdateItemInCartData';
 
 export {
   validateLoginData,
@@ -13,5 +15,7 @@ export {
   validateUpdateCustomerAddressData,
   validateUpdateCustomerCreditCardData,
   normalizePaginationParams,
-  validateAddProductReviewsData
+  validateAddProductReviewsData,
+  validateProductInCartData,
+  validateUpdateItemInCartData
 };

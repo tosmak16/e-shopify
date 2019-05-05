@@ -52,7 +52,7 @@ Attribute.hasMany(AttributeValue, { foreignKey: 'attribute_id' });
 AttributeValue.belongsToMany(Product, { through: 'product_attribute' });
 Product.belongsToMany(AttributeValue, { through: 'product_attribute' });
 
-ShoppingCart.belongsTo(Department, { foreignKey: 'product_id' });
+ShoppingCart.belongsTo(Product, { foreignKey: 'product_id' });
 Product.hasMany(ShoppingCart, { foreignKey: 'product_id' });
 
 Orders.belongsTo(Customer, { foreignKey: 'customer_id' });
