@@ -8,7 +8,9 @@ import {
   validateUpdateCustomerAddressData,
   validateUpdateCustomerCreditCardData,
   normalizePaginationParams,
-  validateAddProductReviewsData
+  validateAddProductReviewsData,
+  validateProductInCartData,
+  validateUpdateItemInCartData
 } from '../middlewares/validationMiddlewares';
 import {
   signIn,
@@ -50,6 +52,19 @@ import {
 import { getTaxes, getSingleTax } from '../controllers/taxes';
 
 import { getShippingRegions, getSingleShippingRegion } from '../controllers/shippingRegions';
+
+import {
+  generateUniqueCartId,
+  addProductInCart,
+  getProductInCartList,
+  updateCartItem,
+  deleteCart,
+  moveProductToCart,
+  saveItemInCartForLater,
+  getSavedItemInCartForLater,
+  removeProductInCart,
+  getTotalAmountInCart
+} from '../controllers/shoppingCart';
 
 const router = express.Router();
 
@@ -110,5 +125,17 @@ router.get('/tax/:id', getSingleTax);
 // ********* */ Shipping Region routes ************ //
 router.get('/shipping/regions', getShippingRegions);
 router.get('/shipping/regions/:id', getSingleShippingRegion);
+
+// ********* */ Shopping Carts routes ************ //
+router.get('/shoppingcart/generateUniqueId', generateUniqueCartId);
+router.post('/shoppingcart/add', validateProductInCartData, addProductInCart);
+router.get('/shoppingcart/:id', getProductInCartList);
+router.put('/shoppingcart/update/:id', validateUpdateItemInCartData, updateCartItem);
+router.delete('/shoppingcart/empty/:id', deleteCart);
+router.get('/shoppingcart/moveToCart/:id', moveProductToCart);
+router.get('/shoppingcart/saveForLater/:id', saveItemInCartForLater);
+router.get('/shoppingcart/getSaved/:id', getSavedItemInCartForLater);
+router.delete('/shoppingcart/removeProduct/:id', removeProductInCart);
+router.get('/shoppingcart/totalAmount/:id', getTotalAmountInCart);
 
 export default router;

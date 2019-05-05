@@ -40,7 +40,7 @@ export default {
       options: { min: 1 }
     },
     matches: {
-      options: [/^[1-9][0-9]{0,2}$/],
+      options: [/\d+$/],
       errorMessage: 'shipping_region_id should be a number'
     },
     trim: true
