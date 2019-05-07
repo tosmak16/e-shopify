@@ -8,6 +8,7 @@ import validateAddProductReviewsData from './validateAddProductReviewsData';
 import validateProductInCartData from './validateProductInCartData';
 import validateUpdateItemInCartData from './validateUpdateItemInCartData';
 import validateCreateOrderData from './validateCreateOrderData';
+import validateStripeChargeCustomerData from './validateStripeChargeCustomerData';
 
 export {
   validateLoginData,
@@ -19,5 +20,6 @@ export {
   validateAddProductReviewsData,
   validateProductInCartData,
   validateUpdateItemInCartData,
-  validateCreateOrderData
+  validateCreateOrderData,
+  validateStripeChargeCustomerData
 };

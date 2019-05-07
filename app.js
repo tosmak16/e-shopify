@@ -5,6 +5,7 @@ import path from 'path';
 import bodyParser from 'body-parser';
 import dotenv from 'dotenv';
 import validator from 'express-validator';
+import helmet from 'helmet';
 
 import routes from './server/routes';
 
@@ -15,6 +16,8 @@ const PORT = process.env.PORT || 3000;
 
 const BUILD_DIR = path.join(__dirname, '/build');
 const HTML_FILE = path.join(BUILD_DIR, 'index.html');
+
+app.use(helmet());
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());

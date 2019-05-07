@@ -11,7 +11,8 @@ import {
   validateAddProductReviewsData,
   validateProductInCartData,
   validateUpdateItemInCartData,
-  validateCreateOrderData
+  validateCreateOrderData,
+  validateStripeChargeCustomerData
 } from '../middlewares/validationMiddlewares';
 import {
   signIn,
@@ -73,6 +74,8 @@ import {
   getOrdersByCustomer,
   getInfoAboutOrder
 } from '../controllers/orders';
+
+import { chargeCustomer } from '../controllers/stripe';
 
 const router = express.Router();
 
@@ -151,5 +154,8 @@ router.post('/orders', tokenAuthMiddleware, validateCreateOrderData, createOrder
 router.get('/orders/inCustomer', tokenAuthMiddleware, getOrdersByCustomer);
 router.get('/orders/:id', tokenAuthMiddleware, getOrders);
 router.get('/orders/shortDetail/:id', tokenAuthMiddleware, getInfoAboutOrder);
+
+// ********* */ Stripe routes ************ //
+router.post('/stripe/charge', validateStripeChargeCustomerData, chargeCustomer);
 
 export default router;
