@@ -7,6 +7,7 @@ import normalizePaginationParams from './normalizePaginationParams';
 import validateAddProductReviewsData from './validateAddProductReviewsData';
 import validateProductInCartData from './validateProductInCartData';
 import validateUpdateItemInCartData from './validateUpdateItemInCartData';
+import validateCreateOrderData from './validateCreateOrderData';
 
 export {
   validateLoginData,
@@ -17,5 +18,6 @@ export {
   normalizePaginationParams,
   validateAddProductReviewsData,
   validateProductInCartData,
-  validateUpdateItemInCartData
+  validateUpdateItemInCartData,
+  validateCreateOrderData
 };

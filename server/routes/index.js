@@ -10,7 +10,8 @@ import {
   normalizePaginationParams,
   validateAddProductReviewsData,
   validateProductInCartData,
-  validateUpdateItemInCartData
+  validateUpdateItemInCartData,
+  validateCreateOrderData
 } from '../middlewares/validationMiddlewares';
 import {
   signIn,
@@ -65,6 +66,13 @@ import {
   removeProductInCart,
   getTotalAmountInCart
 } from '../controllers/shoppingCart';
+
+import {
+  createOrders,
+  getOrders,
+  getOrdersByCustomer,
+  getInfoAboutOrder
+} from '../controllers/orders';
 
 const router = express.Router();
 
@@ -137,5 +145,11 @@ router.get('/shoppingcart/saveForLater/:id', saveItemInCartForLater);
 router.get('/shoppingcart/getSaved/:id', getSavedItemInCartForLater);
 router.delete('/shoppingcart/removeProduct/:id', removeProductInCart);
 router.get('/shoppingcart/totalAmount/:id', getTotalAmountInCart);
+
+// ********* */ Orders routes ************ //
+router.post('/orders', tokenAuthMiddleware, validateCreateOrderData, createOrders);
+router.get('/orders/inCustomer', tokenAuthMiddleware, getOrdersByCustomer);
+router.get('/orders/:id', tokenAuthMiddleware, getOrders);
+router.get('/orders/shortDetail/:id', tokenAuthMiddleware, getInfoAboutOrder);
 
 export default router;
