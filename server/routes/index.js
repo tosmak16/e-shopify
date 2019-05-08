@@ -1,6 +1,9 @@
 import express from 'express';
 
 import tokenAuthMiddleware from '../middlewares/authenticationMiddleware/tokenAuthMiddleware';
+import passportAuth from '../middlewares/authenticationMiddleware/passportAuth';
+import authErrorHandler from '../utils/authErrorHandler';
+
 import {
   validateSignUpData,
   validateLoginData,
@@ -20,7 +23,8 @@ import {
   getCustomer,
   updateCustomer,
   updateCustomerAddress,
-  updateCustomerCreditCard
+  updateCustomerCreditCard,
+  customerFacebookAuth
 } from '../controllers/customers';
 
 import {
@@ -95,6 +99,13 @@ router.put(
   tokenAuthMiddleware,
   validateUpdateCustomerCreditCardData,
   updateCustomerCreditCard
+);
+
+router.post(
+  '/customers/facebook',
+  passportAuth.authenticate('facebook-token', { session: false }),
+  authErrorHandler,
+  customerFacebookAuth
 );
 
 // ********* */ Products routes ************ //

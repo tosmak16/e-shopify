@@ -6,6 +6,7 @@ import bodyParser from 'body-parser';
 import dotenv from 'dotenv';
 import validator from 'express-validator';
 import helmet from 'helmet';
+import passport from 'passport';
 
 import routes from './server/routes';
 
@@ -22,6 +23,7 @@ app.use(helmet());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(validator());
+app.use(passport.initialize());
 
 app.use('/', routes);
 

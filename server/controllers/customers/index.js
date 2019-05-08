@@ -4,6 +4,7 @@ import getCustomer from './getCustomer';
 import updateCustomer from './updateCustomer';
 import updateCustomerAddress from './updateCustomerAddress';
 import updateCustomerCreditCard from './updateCustomerCreditCard';
+import customerFacebookAuth from './customerFacebookAuth';
 
 export {
   signIn,
@@ -11,5 +12,6 @@ export {
   getCustomer,
   updateCustomer,
   updateCustomerAddress,
-  updateCustomerCreditCard
+  updateCustomerCreditCard,
+  customerFacebookAuth
 };

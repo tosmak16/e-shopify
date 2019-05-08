@@ -6,6 +6,11 @@ class CustomerService {
     return result;
   }
 
+  static async findOrCreate(filterParams, modelData) {
+    const result = await Customer.findOrCreate({ where: filterParams, defaults: modelData });
+    return result;
+  }
+
   static async findOneBy(modelData) {
     const result = await Customer.findOne({ where: { ...modelData } });
     return result;
