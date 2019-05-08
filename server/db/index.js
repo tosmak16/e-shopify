@@ -28,8 +28,8 @@ const AttributeValue = AttributeValueModel(dbConnect);
 const ShoppingCart = ShoppingCartModel(dbConnect);
 const Orders = OrdersModel(dbConnect);
 const OrderDetail = OrderDetailModel(dbConnect);
-const ShippingRegion = ShippingRegionModel(dbConnect);
 const Customer = CustomerModel(dbConnect);
+const ShippingRegion = ShippingRegionModel(dbConnect);
 const Shipping = ShippingModel(dbConnect);
 const Tax = TaxModel(dbConnect);
 const Audit = AuditModel(dbConnect);
@@ -40,17 +40,11 @@ const Review = ReviewModel(dbConnect);
 Category.belongsTo(Department, { foreignKey: 'department_id' });
 Department.hasMany(Category, { foreignKey: 'department_id' });
 
-Category.belongsToMany(Product, { through: 'product_category' });
-Product.belongsToMany(Category, { through: 'product_category' });
-
 ProductCategory.hasMany(Product, { foreignKey: 'product_id' });
 Product.belongsTo(ProductCategory, { foreignKey: 'product_id' });
 
 AttributeValue.belongsTo(Attribute, { foreignKey: 'attribute_id' });
 Attribute.hasMany(AttributeValue, { foreignKey: 'attribute_id' });
-
-AttributeValue.belongsToMany(Product, { through: 'product_attribute' });
-Product.belongsToMany(AttributeValue, { through: 'product_attribute' });
 
 ShoppingCart.belongsTo(Product, { foreignKey: 'product_id' });
 Product.hasMany(ShoppingCart, { foreignKey: 'product_id' });
