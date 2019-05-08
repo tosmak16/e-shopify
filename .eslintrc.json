@@ -4,5 +4,14 @@
   "rules": {
     "prettier/prettier": ["error"],
     "camelcase": 0
+  },
+  "globals": {
+    "document": true,
+    "describe": true,
+    "window": true,
+    "localStorage": true,
+    "it": true,
+    "before": true,
+    "after": true
   }
 }

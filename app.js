@@ -34,3 +34,5 @@ if (process.env.NODE_ENV === 'production') {
 app.listen(PORT, () => {
   console.log(`Running on port ${PORT}`);
 });
+
+export default app;
