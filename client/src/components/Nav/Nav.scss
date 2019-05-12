@@ -1,0 +1,8 @@
+.nav {
+    display: none;
+    justify-content: flex-end;
+
+    @media (max-width: 730px) {
+        display: flex;
+    }
+}

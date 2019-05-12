@@ -76,19 +76,15 @@ const common = {
         test: /\.css$/,
         use: [
           {
-            loader: 'style-loader'
-          },
-          {
-            loader: 'css-loader',
+            loader: MiniCssExtractPlugin.loader,
             options: {
-              sourceMap: isDevelopmentMode,
-              modules: true,
-              importLoaders: 1,
-              localIdentName: '[name]__[local]___[hash:base64:5]'
+              hmr: isDevelopmentMode
             }
-          }
+          },
+          'css-loader'
         ]
       },
+
       {
         test: /\.scss$/,
         use: [
@@ -130,7 +126,13 @@ const common = {
           template: './index.html'
         }
       )
-    )
+    ),
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: JSON.stringify(process.env.NODE_ENV),
+        api_url: JSON.stringify(process.env.api_url)
+      }
+    })
   ],
   resolve: {
     extensions: ['.js', '.jsx', '.css', '.scss'],

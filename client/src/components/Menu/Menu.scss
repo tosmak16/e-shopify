@@ -1,0 +1,35 @@
+@import '~variables';
+
+
+.main-container {
+    display: grid;
+    background-color: rgb(245, 247, 250);
+    justify-content: center;
+    height: 100%;
+    align-content: flex-start;
+    padding: 100px 0;
+    grid-row-gap: 30px;
+
+    @media (max-width: 730px) {
+        padding: 40px 0;
+    }
+
+}
+
+.filter-container {
+    display: grid;
+    grid-gap: 30px;
+    align-content: flex-start;
+
+    @media (max-width: 730px) {
+        grid-template-columns: 1fr 1fr;
+        margin: 20px 0;
+    }
+}
+
+.header {
+    font-family: $main-font;
+    font-weight: bold;
+    font-size: 18px;
+    cursor: pointer;
+}

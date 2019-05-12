@@ -1,0 +1,115 @@
+@import "~variables";
+
+.button {
+    width: 100%;
+    font-family: $main-font;
+    font-weight: bold;
+    height: 50px;
+    font-weight: bold;
+    background: $blue;
+    cursor: pointer;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.12);
+    font-size: 14px;
+    letter-spacing: 0;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all .5s;
+
+    &:focus,
+    &:active {
+        outline: none;
+    }
+
+
+
+}
+
+.button--disabled {
+    cursor: default;
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+.button--danger,
+.button--warning,
+.button--standard,
+.button--white,
+.button--plain {
+    composes: button;
+}
+
+.button {
+    &--standard {
+        color: $white;
+        background: orange;
+
+        &:hover {
+            background-color: black;
+            box-shadow: -3px -1px 5px #00000059;
+
+        }
+
+
+        &:active {
+            box-shadow: 0px 0px 2px #00000059;
+        }
+
+
+    }
+
+    &--warning {
+        background: rgb(204, 201, 38);
+    }
+
+    &--danger {
+        background: $fast-car-red;
+        color: $white;
+    }
+
+    &--plain {
+        color: $blue;
+        background: $white;
+        box-shadow: none;
+    }
+
+    &--white {
+        background: white;
+        color: $blue;
+
+        &:hover {
+            box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.12);
+            cursor: pointer;
+        }
+
+        &:active {
+            background-color: $blue;
+            color: $white;
+        }
+    }
+}
+
+
+.ripple {
+    background-position: center;
+    transition: background 1s;
+}
+
+.ripple:hover {
+    background: $dark-blue radial-gradient(circle, transparent 1%, $dark-blue 1%) center/15000%;
+}
+
+.ripple:active {
+    background-color: $blue;
+    background-size: 100%;
+    transition: background 0s;
+    color: $white;
+}
+
+.bordered {
+    border-radius: 4px;
+}

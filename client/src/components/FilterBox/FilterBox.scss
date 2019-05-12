@@ -1,0 +1,38 @@
+@import '~variables';
+
+.container {
+    display: grid;
+    grid-row-gap: 20px;
+}
+
+.list-item {
+    text-decoration: none;
+    list-style: none;
+    cursor: pointer;
+    font-family: $main-font;
+    text-transform: capitalize;
+    font-size: 18px;
+    font-weight: 500;
+    color: #959595;
+
+    &:hover {
+        color: olivedrab;
+    }
+}
+
+
+.list-container {
+    display: grid;
+    grid-row-gap: 10px;
+}
+
+.active {
+    color: #fbb710;
+}
+
+
+.header {
+    font-family: $main-font;
+    font-weight: bold;
+    font-size: 18px;
+}

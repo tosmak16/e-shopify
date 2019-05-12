@@ -1,0 +1,138 @@
+@import '~variables';
+
+
+.card {
+    perspective: 150rem;
+    -moz-perspective: 150rem;
+    position: relative;
+    height: 300px;
+    color: black;
+}
+
+.card__side {
+    width: 100%;
+    backface-visibility: hidden;
+    font-size: 16px;
+    transition: all .9s ease;
+    position: absolute;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+    height: 300px;
+    border-radius: 0.3rem;
+    box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
+    font-family: $main-font;
+
+}
+
+.card__side--front {
+    background-color: #fff;
+    font-family: $main-font;
+
+}
+
+.card__side--back {
+    transform: rotateY(180deg);
+    font-family: $main-font;
+
+}
+
+.card__side--back-1 {
+    background-image: linear-gradient(to right bottom, #232741, #273A35);
+}
+
+.card:hover .card__side--front {
+    transform: rotateY(-180deg);
+}
+
+.card:hover .card__side--back {
+    transform: rotateY(0);
+}
+
+.card__picture {
+    background-size: cover;
+    background-blend-mode: screen;
+    height: 100px;
+}
+
+.card__picture--1 {
+    width: 100%;
+    height: 200px;
+}
+
+.card__heading {
+    position: absolute;
+    top: 50px;
+    right: 2px;
+    font-size: 16px;
+    text-transform: uppercase;
+    color: #f7f7f7;
+    font-weight: 300;
+    text-align: right;
+    width: 75%;
+}
+
+.card__heading-span {
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+    padding: 1px 5px;
+}
+
+.card__heading-span--1 {
+    background-image: linear-gradient(to right bottom, rgba(255, 185, 0, 0.85), rgba(255, 119, 48, 0.85));
+}
+
+.card__details {
+    padding: 3px;
+}
+
+.card__details ul {
+    list-style: none;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.card__details ul li {
+    text-align: center;
+    font-size: 15px;
+    padding: 5px;
+}
+
+.card__details ul li:not(:last-child) {
+    border-bottom: 1px solid #eee;
+}
+
+.card__cta {
+    text-align: center;
+    color: #fff;
+    display: grid;
+    grid-row-gap: 10px;
+    align-items: center;
+    height: 100%;
+    justify-content: center;
+    justify-items: center;
+}
+
+.card__size-box {
+    text-align: center;
+}
+
+.card__size {
+    font-size: 15px;
+    font-weight: 100;
+}
+
+.btn {
+    text-transform: uppercase;
+    text-decoration: none !important;
+    padding: 15px 30px;
+    border-radius: 10px;
+    transition: all .2s;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    background-color: #fff;
+    color: #777;
+    max-width: 20rem;
+    text-align: center;
+}

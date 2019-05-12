@@ -1,0 +1,42 @@
+.main-container {
+    display: grid;
+    justify-content: center;
+    grid-template-rows: 100px auto;
+}
+
+.side-menu {
+    display: grid;
+    grid-auto-rows: 200px;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+
+    &__list {
+        display: grid;
+        grid-row-gap: 20px;
+    }
+
+    &__link {
+        display: block;
+    }
+
+    &__item {
+        display: block;
+        border-bottom: 2px solid orange;
+        cursor: pointer;
+        padding: 10px;
+
+        &:hover {
+            border-bottom: 2px solid orangered;
+        }
+    }
+}
+
+.active {
+    display: block;
+    border-bottom: 2px solid olive;
+}
+
+a {
+    font-size: 18px;
+}

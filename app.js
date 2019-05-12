@@ -7,6 +7,7 @@ import dotenv from 'dotenv';
 import validator from 'express-validator';
 import helmet from 'helmet';
 import passport from 'passport';
+import cors from 'cors';
 
 import routes from './server/routes';
 
@@ -19,6 +20,7 @@ const BUILD_DIR = path.join(__dirname, '/build');
 const HTML_FILE = path.join(BUILD_DIR, 'index.html');
 
 app.use(helmet());
+app.use(cors());
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());

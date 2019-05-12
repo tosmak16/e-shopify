@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button renders with icon 1`] = `
+<button
+  className="button--standard"
+  disabled={false}
+  onClick={[Function]}
+  type="button"
+>
+  icon text
+  Hello world!
+</button>
+`;
+
+exports[`Button renders with other button type 1`] = `
+<button
+  className="button--plain"
+  disabled={false}
+  onClick={[Function]}
+  type="button"
+>
+  icon text
+  Hello world!
+</button>
+`;

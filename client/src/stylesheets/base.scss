@@ -1,0 +1,40 @@
+@import './slider';
+@import '~variables';
+
+
+
+a {
+    font-family: $main-font;
+    font-weight: bold;
+    padding: 0;
+    text-decoration: none !important;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-family: $main-font;
+
+}
+
+.active {
+    border: 1px solid black;
+    color: black;
+    padding: 5px;
+    font-size: 16px;
+    outline: none;
+    cursor: pointer;
+    text-decoration: none !important;
+
+    &:hover {
+        box-shadow: 0px 0px 2px #00000061;
+        color: burlywood;
+
+    }
+}

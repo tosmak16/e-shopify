@@ -3,7 +3,8 @@
   "plugins": ["prettier"],
   "rules": {
     "prettier/prettier": ["error"],
-    "camelcase": 0
+    "camelcase": 0,
+    "react/react-in-jsx-scope": 0
   },
   "globals": {
     "document": true,
@@ -12,6 +13,7 @@
     "localStorage": true,
     "it": true,
     "before": true,
-    "after": true
+    "after": true,
+    "CSSModules": true
   }
 }
