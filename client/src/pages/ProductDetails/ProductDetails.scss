@@ -1,0 +1,42 @@
+@import '~variables';
+
+
+.main-container {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+
+    @media (max-width: 730px) {
+        grid-template-columns: auto;
+    }
+}
+
+
+.sidebar-container {
+    padding: 0 0;
+
+    @media (max-width: 730px) {
+        z-index: 100;
+        width: 230px;
+        position: absolute;
+        background-color: white;
+        height: 100%;
+        display: none;
+    }
+}
+
+.main-content {
+    display: grid;
+    grid-template-columns: minmax(auto, 450px) 1fr;
+
+    @media (max-width: 730px) {
+        grid-template-columns: auto;
+
+    }
+}
+
+.image-slider-wrapper {
+    display: block;
+    padding: 5%;
+    height: 400px;
+    max-height: 400px;
+}

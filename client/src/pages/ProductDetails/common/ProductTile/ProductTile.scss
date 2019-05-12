@@ -1,0 +1,67 @@
+@import '~variables';
+
+
+.product-details-wrapper {
+    display: grid;
+    padding: 5%;
+}
+
+.content-wrapper {
+    display: grid;
+    grid-row-gap: 10px;
+    height: 100%;
+    padding: 5%;
+
+}
+
+input {
+    border: 1px solid rgb(248, 248, 246);
+    border-radius: 4px;
+    padding: 10px;
+    background-color: #e8ecef5e;
+
+    &:focus {
+        outline: none !important;
+    }
+}
+
+.price {
+    color: orange;
+    font-family: $main-font;
+    border-top: 3px solid orange;
+    max-width: 50px;
+    font-weight: bold;
+    padding-top: 10px;
+
+}
+
+.name {
+    font-family: $main-font;
+    font-weight: bold;
+    font-size: 18px;
+    text-transform: capitalize;
+}
+
+.description {
+    font-family: $main-font;
+    color: gray;
+}
+
+
+.button-wrapper {
+    align-self: flex-end;
+}
+
+.color-wrapper {
+    display: grid;
+    grid-gap: 10px;
+    font-family: $main-font;
+    font-weight: bold;
+}
+
+.size-wrapper {
+    display: grid;
+    grid-gap: 10px;
+    font-family: $main-font;
+    font-weight: bold;
+}
