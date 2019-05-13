@@ -9,7 +9,16 @@ import {
   ADD_TO_CART_FAIL,
   UPDATE_CART_FAIL,
   UPDATE_CART_START,
-  UPDATE_CART_SUCCESS
+  UPDATE_CART_SUCCESS,
+  GET_PRODUCT_IN_CART_START,
+  GET_PRODUCT_IN_CART_SUCCESS,
+  GET_PRODUCT_IN_CART_FAIL,
+  REMOVE_PRODUCT_IN_CART_START,
+  REMOVE_PRODUCT_IN_CART_SUCCESS,
+  REMOVE_PRODUCT_IN_CART_FAIL,
+  GET_TOTAL_AMOUNT_IN_CART_FAIL,
+  GET_TOTAL_AMOUNT_IN_CART_START,
+  GET_TOTAL_AMOUNT_IN_CART_SUCCESS
 } from './types';
 
 export const updateCart = (quantity, itemId, history) => async dispatch => {
@@ -25,7 +34,7 @@ export const updateCart = (quantity, itemId, history) => async dispatch => {
         data
       });
 
-      return history.push('/cart');
+      return history ? history.push('/cart') : null;
     }
   } catch (error) {
     dispatch({ type: UPDATE_CART_FAIL, data: error.response.data.message });
@@ -33,7 +42,7 @@ export const updateCart = (quantity, itemId, history) => async dispatch => {
 };
 
 export const addToCart = ({
-  product_id,
+  productId,
   attributes,
   quantity,
   cart_id,
@@ -42,13 +51,13 @@ export const addToCart = ({
   dispatch({ type: ADD_TO_CART_START });
   try {
     const response = await axios.post(`${process.env.api_url}shoppingcart/add`, {
-      product_id,
+      product_id: productId,
       attributes,
       cart_id
     });
     if (response.status === 200) {
       const { data } = response;
-      const { item_id } = data[0];
+      const { item_id } = data[data.length - 1];
 
       const isQuantityMoreThanOne = quantity > 1;
 
@@ -84,7 +93,7 @@ export const generateUniqueCartId = ({
       const { data } = response;
       const { cart_id } = data;
 
-      dispatch(addToCart({ product_id: productId, attributes, quantity, cart_id, history }));
+      dispatch(addToCart({ productId, attributes, quantity, cart_id, history }));
       return dispatch({
         type: GENERATE_UNIQUE_CART_ID_SUCCESS,
         data
@@ -95,4 +104,51 @@ export const generateUniqueCartId = ({
   }
 };
 
-export default generateUniqueCartId;
+export const getProductsInCart = cartId => async dispatch => {
+  dispatch({ type: GET_PRODUCT_IN_CART_START });
+  try {
+    const response = await axios.get(`${process.env.api_url}shoppingcart/${cartId}`);
+    if (response.status === 200) {
+      const { data } = response;
+      return dispatch({
+        type: GET_PRODUCT_IN_CART_SUCCESS,
+        data
+      });
+    }
+  } catch (error) {
+    dispatch({ type: GET_PRODUCT_IN_CART_FAIL, data: error.response.data.message });
+  }
+};
+
+export const removeProductFromCart = itemId => async dispatch => {
+  dispatch({ type: REMOVE_PRODUCT_IN_CART_START });
+  try {
+    const response = await axios.delete(
+      `${process.env.api_url}shoppingcart/removeProduct/${itemId}`
+    );
+    if (response.status === 200) {
+      return dispatch({
+        type: REMOVE_PRODUCT_IN_CART_SUCCESS,
+        data: { itemId }
+      });
+    }
+  } catch (error) {
+    dispatch({ type: REMOVE_PRODUCT_IN_CART_FAIL, data: error.response.data.message });
+  }
+};
+
+export const getTotalAmountInCart = cartId => async dispatch => {
+  dispatch({ type: GET_TOTAL_AMOUNT_IN_CART_START });
+  try {
+    const response = await axios.get(`${process.env.api_url}shoppingcart/totalAmount/${cartId}`);
+    if (response.status === 200) {
+      const { data } = response;
+      return dispatch({
+        type: GET_TOTAL_AMOUNT_IN_CART_SUCCESS,
+        data
+      });
+    }
+  } catch (error) {
+    dispatch({ type: GET_TOTAL_AMOUNT_IN_CART_FAIL, data: error.response.data.message });
+  }
+};

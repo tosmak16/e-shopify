@@ -3,7 +3,7 @@ import { Product } from '../db';
 export default (
   where = {},
   arrayOfAttributesToEclude = [],
-  includeAttributesList = ['name', 'price', 'image']
+  includeAttributesList = ['name', 'price', 'image', 'product_id']
 ) => ({
   where,
   attributes: { exclude: arrayOfAttributesToEclude },

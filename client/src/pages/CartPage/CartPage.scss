@@ -1,0 +1,40 @@
+.main-container {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-gap: 20px;
+    padding: 50px 20px;
+
+    @media (max-width: 1088px) {
+        grid-template-columns: auto;
+        padding: 0;
+    }
+}
+
+.button-wrapper {
+    align-self: flex-end;
+}
+
+.total-checkout-container {
+    height: 100%;
+}
+
+h2 {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.checkout-content {
+    padding: 10px;
+    display: grid;
+    height: 200px;
+}
+
+
+.total-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.total-amount-text {
+    justify-self: flex-end;
+}

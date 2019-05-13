@@ -18,7 +18,7 @@ const getTotalAmountInCart = async (req, res) => {
     total_amount += quantity * price;
   });
 
-  return res.status(200).send({ total_amount });
+  return res.status(200).send({ total_amount: total_amount.toFixed(2) });
 };
 
 export default getTotalAmountInCart;
