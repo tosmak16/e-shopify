@@ -3,7 +3,7 @@
 
 .main-container {
     display: grid;
-    grid-template-columns: 280px minmax(0, 230px) 1fr;
+    grid-template-columns: minmax(0, 230px) 1fr;
     height: 100vh;
 
     @media (max-width: 730px) {
@@ -32,23 +32,13 @@
     }
 }
 
-.sidebar-container {
-    padding: 0 0;
-    transform: translateX(0px);
-
-    @media (max-width: 730px) {
-        transform: translateX(0px);
-        z-index: 100;
-        width: 230px;
-        position: absolute;
-        background-color: white;
-        height: 100%;
-        display: none;
-    }
-}
 
 .menu-container {
     padding: 0 0;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    background: #fff;
+    transition: all .2s cubic-bezier(.25, .25, .25, 1);
+    border-radius: 4px;
     height: 100%;
 }
 

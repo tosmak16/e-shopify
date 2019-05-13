@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EmailInput renders 1`] = `
+<div>
+  <TextInput
+    className=""
+    dark={false}
+    disabled={false}
+    errorMessage=""
+    id="email"
+    inputDidChange={false}
+    isValid={true}
+    label=""
+    name="email"
+    onBlur={null}
+    onChange={[Function]}
+    onChangePasswordVisibilityStatus={[Function]}
+    onKeyDown={[Function]}
+    placeholder=""
+    shouldShowCheckMark={false}
+    shouldShowErrorMessage={true}
+    shouldShowVisibility={false}
+    type="email"
+    updateEmail={[MockFunction]}
+    updatedEmail={
+      Object {
+        "error": "",
+        "value": "",
+      }
+    }
+    value=""
+  />
+</div>
+`;

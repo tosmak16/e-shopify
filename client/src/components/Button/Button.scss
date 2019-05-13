@@ -6,7 +6,7 @@
     font-weight: bold;
     height: 50px;
     font-weight: bold;
-    background: $blue;
+    background: black;
     cursor: pointer;
     color: #fff;
     border: none;
@@ -72,14 +72,14 @@
     }
 
     &--plain {
-        color: $blue;
+        color: black;
         background: $white;
         box-shadow: none;
     }
 
     &--white {
         background: white;
-        color: $blue;
+        color: black;
 
         &:hover {
             box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.12);
@@ -87,7 +87,7 @@
         }
 
         &:active {
-            background-color: $blue;
+            background-color: black;
             color: $white;
         }
     }
@@ -100,11 +100,11 @@
 }
 
 .ripple:hover {
-    background: $dark-blue radial-gradient(circle, transparent 1%, $dark-blue 1%) center/15000%;
+    background: black radial-gradient(circle, transparent 1%, rgba(0, 0, 0, 0.1) 1%) center/15000%;
 }
 
 .ripple:active {
-    background-color: $blue;
+    background-color: black;
     background-size: 100%;
     transition: background 0s;
     color: $white;

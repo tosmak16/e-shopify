@@ -1,14 +1,17 @@
 import { connect } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { isEmpty } from 'lodash';
+import { withRouter } from 'react-router';
 
 import styles from './ProductDetails.scss';
-import Nav from '../../components/Nav/Nav';
-import SideBar from '../../components/SideBar/SideBar';
 import ImageSlider from '../../components/ImageSlider/ImageSlider';
 import Tile from '../../components/Tile/Tile';
-import Button from '../../components/Button/Button';
-import { getProductDetails, getAttributesInProduct, generateUniqueCartId } from '../../actions';
+import {
+  getProductDetails,
+  getAttributesInProduct,
+  generateUniqueCartId,
+  addToCart
+} from '../../actions';
 import ProductTile from './common/ProductTile/ProductTile';
 
 const ProductDetails = props => {
@@ -21,7 +24,9 @@ const ProductDetails = props => {
     getAttributesInProduct,
     attributesInProductData,
     generateUniqueCartId,
-    history
+    history,
+    addToCart,
+    cartId
   } = props;
   const [productDetails, setProductDetails] = useState({});
   const [selectedAttributes, setSelectedAttributes] = useState({ size: '', color: '' });
@@ -30,14 +35,18 @@ const ProductDetails = props => {
   const addProductColor = color => setSelectedAttributes({ ...selectedAttributes, color });
 
   const addProductSize = size => setSelectedAttributes({ ...selectedAttributes, size });
-
-  const addToCart = () => {
-    generateUniqueCartId({
+  const addProductToCart = () => {
+    const addToCartData = {
       productId,
       attributes: `${selectedAttributes.color} ${selectedAttributes.size}`,
       quantity,
-      history
-    });
+      history,
+      cart_id: cartId
+    };
+    if (isEmpty(cartId)) {
+      return generateUniqueCartId(addToCartData);
+    }
+    return addToCart(addToCartData);
   };
 
   useEffect(() => {
@@ -54,38 +63,35 @@ const ProductDetails = props => {
     setProductDetails(productData);
   }, [productData]);
   return (
-    <div styleName="main-container">
-      <Nav />
-      <section styleName="sidebar-container">
-        <SideBar />
-      </section>
-      <section>
-        <div styleName="main-content">
-          <div styleName="image-slider-wrapper">
-            <Tile>
-              <ImageSlider productData={productData} />
-            </Tile>
-          </div>
-          <ProductTile
-            attributesInProductData={attributesInProductData}
-            addProductSize={addProductSize}
-            addProductColor={addProductColor}
-            productData={productData}
-            onQuanityValueChanged={setQuantity}
-            addToCart={addToCart}
-          />
+    <section>
+      <div styleName="main-content">
+        <div styleName="image-slider-wrapper">
+          <Tile>
+            <ImageSlider productData={productData} />
+          </Tile>
         </div>
-      </section>
-    </div>
+        <ProductTile
+          attributesInProductData={attributesInProductData}
+          addProductSize={addProductSize}
+          addProductColor={addProductColor}
+          productData={productData}
+          onQuanityValueChanged={setQuantity}
+          addToCart={addProductToCart}
+        />
+      </div>
+    </section>
   );
 };
 
 const mapStateToProps = state => ({
   productData: state.product.data,
-  attributesInProductData: state.attributesInProduct.data
+  attributesInProductData: state.attributesInProduct.data,
+  cartId: state.cart.data.cart_id
 });
 
-export default connect(
-  mapStateToProps,
-  { getProductDetails, getAttributesInProduct, generateUniqueCartId }
-)(CSSModules(ProductDetails, styles));
+export default withRouter(
+  connect(
+    mapStateToProps,
+    { getProductDetails, getAttributesInProduct, generateUniqueCartId, addToCart }
+  )(CSSModules(ProductDetails, styles))
+);

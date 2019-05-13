@@ -8,7 +8,16 @@ import { getDepartments } from './departments';
 import { getCategoryInDepartment } from './categories';
 import { getProductDetails } from './productDetails';
 import { getAttributesInProduct } from './attributes';
-import { generateUniqueCartId, addToCart } from './cart';
+import {
+  generateUniqueCartId,
+  addToCart,
+  getProductsInCart,
+  updateCart,
+  removeProductFromCart,
+  getTotalAmountInCart
+} from './cart';
+
+import { registerUser } from './customer';
 
 export {
   getProducts,
@@ -20,5 +29,10 @@ export {
   getProductDetails,
   getAttributesInProduct,
   generateUniqueCartId,
-  addToCart
+  addToCart,
+  getProductsInCart,
+  updateCart,
+  removeProductFromCart,
+  getTotalAmountInCart,
+  registerUser
 };

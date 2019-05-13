@@ -1,0 +1,9 @@
+@import "~variables";
+
+.input-validation-message-label {
+    @include input-validation-text;
+    font-family: $main-font;
+    word-spacing: -4px;
+    letter-spacing: -1px;
+
+}

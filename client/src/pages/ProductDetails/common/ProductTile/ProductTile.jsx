@@ -47,6 +47,7 @@ const ProductTile = props => {
           <p styleName="name">{name}</p>
           <p styleName="description">{description}</p>
           <input
+            styleName="quantity"
             onChange={handleChange}
             value={quantityValue}
             type="number"

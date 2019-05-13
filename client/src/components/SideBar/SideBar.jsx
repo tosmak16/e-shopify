@@ -10,13 +10,13 @@ const SideBar = () => (
     <section styleName="side-menu">
       <ul styleName="side-menu__list">
         <li styleName="side-menu__item active">
-          <Link to="/a">SHOP</Link>
+          <Link to="/products">SHOP</Link>
         </li>
         <li styleName="side-menu__item">
-          <Link to="/a">CART</Link>
+          <Link to="/cart">CART</Link>
         </li>
         <li styleName="side-menu__item">
-          <Link to="/a">CHECKOUT</Link>
+          <Link to="/">CHECKOUT</Link>
         </li>
       </ul>
     </section>

@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NameInput renders 1`] = `
+<div>
+  <TextInput
+    className=""
+    dark={false}
+    disabled={false}
+    errorMessage=""
+    id="test-input"
+    inputDidChange={false}
+    isValid={true}
+    label=""
+    name=""
+    onBlur={null}
+    onChange={[Function]}
+    onChangePasswordVisibilityStatus={[Function]}
+    onKeyDown={[Function]}
+    placeholder=""
+    shouldShowVisibility={false}
+    type="text"
+    value=""
+  />
+</div>
+`;

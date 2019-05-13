@@ -2,6 +2,7 @@
     display: grid;
     justify-content: center;
     grid-template-rows: 100px auto;
+
 }
 
 .side-menu {
@@ -10,6 +11,7 @@
     justify-content: center;
     padding: 0;
     margin: 0;
+    height: 100%;
 
     &__list {
         display: grid;
@@ -21,19 +23,26 @@
     }
 
     &__item {
-        display: block;
+        display: flex;
         border-bottom: 2px solid orange;
         cursor: pointer;
         padding: 10px;
+        justify-content: center;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+        background: #fff;
+        transition: all .2s cubic-bezier(.25, .25, .25, 1);
+        border-radius: 4px;
+        height: 100%;
 
         &:hover {
+            box-shadow: 1px 2px 15px rgba(0, 0, 0, 0.32), 0 1px 2px rgba(0, 0, 0, 0.24);
             border-bottom: 2px solid orangered;
+
         }
     }
 }
 
 .active {
-    display: block;
     border-bottom: 2px solid olive;
 }
 

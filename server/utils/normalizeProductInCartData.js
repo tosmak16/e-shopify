@@ -1,6 +1,6 @@
 export default productInCartData =>
   productInCartData.map(
-    ({ item_id, product_id, quantity, attributes, Product: { name, price, image } }) => ({
+    ({ item_id, quantity, attributes, Product: { name, price, image, product_id } }) => ({
       item_id,
       product_id,
       quantity,
@@ -8,6 +8,6 @@ export default productInCartData =>
       name,
       price,
       image,
-      subtotal: quantity * price || undefined
+      subtotal: (quantity * price).toFixed(2) || undefined
     })
   );

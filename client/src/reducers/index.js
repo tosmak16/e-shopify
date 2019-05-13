@@ -6,9 +6,9 @@ import categories from './categories';
 import product from './product';
 import attributesInProduct from './attributesInProduct';
 import cart from './cart';
+import customer from './customer';
 
 // Reducers
-
 export default history =>
   combineReducers({
     products,
@@ -17,5 +17,6 @@ export default history =>
     product,
     attributesInProduct,
     cart,
+    customer,
     router: connectRouter(history)
   });

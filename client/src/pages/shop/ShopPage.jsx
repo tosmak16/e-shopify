@@ -2,10 +2,8 @@ import { connect } from 'react-redux';
 import { useEffect, useState } from 'react';
 
 import styles from './ShopPage.scss';
-import SideBar from '../../components/SideBar/SideBar';
 import Menu from '../../components/Menu/Menu';
 import Card from '../../components/Card/Card';
-import Nav from '../../components/Nav/Nav';
 import SearchBar from '../../components/SearchBar/SearchBar';
 import Pagination from '../../components/Pagination/Pagination';
 
@@ -75,10 +73,6 @@ const ShopPage = props => {
 
   return (
     <div styleName="main-container">
-      <Nav />
-      <div styleName="sidebar-container">
-        <SideBar />
-      </div>
       <div styleName="menu-container">
         <Menu
           {...props}

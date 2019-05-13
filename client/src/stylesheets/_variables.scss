@@ -15,14 +15,49 @@ $taupe: #beb7a6;
 $black: #000;
 $white: #fff;
 $fast-car-red: #ab2328;
-$blue: #4996ae;
+$blue: #0b171b;
 $dark-blue: #036b82;
 $green-check: #26a86f;
 $green-success: #26a84e;
 $blue-3: #7b8da8;
-$darker-blue: #1d3155;
+$darker-blue: #0b0b0c;
 $grey-blue: #7e8faa;
 $light-gray: #f4f4f4;
 $mid-gray: #979797;
 $mobile-h1: 40px;
 $debit-red: #C33F3F;
+
+
+@mixin input-validation-text {
+    height: 14px;
+    width: 326px;
+    color: $fast-car-red;
+    font-family: $hanken-sans;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 14px;
+}
+
+@mixin auth-link-container {
+    height: 19px;
+    font-family: $hanken-sans;
+    font-size: 16px;
+    line-height: 19px;
+    margin-bottom: 124px;
+
+    &>a {
+        font-weight: 500;
+        color: $blue;
+    }
+}
+
+@mixin auth-continue-button-container {
+    height: 44px;
+    width: 161px;
+    margin-right: 12%;
+
+    @media (max-width: $mobile-width) {
+        height: 44px;
+        width: 100%;
+    }
+}
