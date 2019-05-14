@@ -1,59 +1,41 @@
-import { useEffect, useState } from 'react';
-import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { withRouter } from 'react-router';
+import { connect } from 'react-redux';
+import { useEffect, useState } from 'react';
 
-import styles from './SignUpPage.scss';
+import styles from './SignInPage.scss';
 import Button from '../../components/Button/Button';
 import Link from '../../components/Link/Link';
-
-import NameInput from '../../components/NameInput/NameInput';
 import EmailInput from '../../components/EmailInput/EmailInput';
 import PasswordInput from '../../components/PasswordInput/PasswordInput';
-import { registerUser } from '../../actions';
+import { loginUser } from '../../actions';
 
 const initialData = {
   value: '',
   error: '',
   isValid: false
 };
-
-const SignUpPage = props => {
-  const [name, setName] = useState(initialData);
-  const [email, setEmail] = useState(initialData);
+const SignInPage = props => {
   const [password, setPassword] = useState({ ...initialData, passwordStrength: 'weak' });
+  const [email, setEmail] = useState(initialData);
 
-  const { registerUser, errorMessage, errorField, history } = props;
+  const isFormValid = email.isValid && password.isValid;
+
+  const { loginUser, errorMessage, errorField, history } = props;
+
+  const handleLoginUser = () =>
+    isFormValid ? loginUser({ email: email.value, password: password.value }, history) : '';
 
   useEffect(() => {
     if (errorField === 'email') {
       return setEmail({ ...email, error: errorMessage });
     }
 
-    if (errorField === 'password') {
-      return setPassword({ ...password, error: errorMessage });
-    }
-    setName({ ...name, error: errorMessage });
+    return setPassword({ ...password, error: errorMessage });
   }, [errorMessage]);
-
-  const isFormValid = name.isValid && email.isValid && password.isValid;
-
-  const handleRegisterUser = () =>
-    isFormValid
-      ? registerUser({ name: name.value, email: email.value, password: password.value }, history)
-      : '';
 
   return (
     <div styleName="form-content">
-      <div styleName="input-container">
-        <NameInput
-          name="name"
-          id="name"
-          placeholder="Name"
-          label="Name"
-          onChange={inputData => setName(inputData)}
-        />
-      </div>
-
       <div styleName="input-container">
         <EmailInput
           updateEmail={setEmail}
@@ -70,23 +52,24 @@ const SignUpPage = props => {
           placeholder="Password"
           label="Password"
           onChange={passwordValue => setPassword(passwordValue)}
-          showPasswordStrength
           shouldShowVisibility
           updatedPassword={password}
         />
       </div>
       <div styleName="button-container">
-        <Button disabled={!isFormValid} onClick={handleRegisterUser}>
+        <Button disabled={!isFormValid} onClick={handleLoginUser}>
           Continue
         </Button>
       </div>
       <div styleName="sign-in-link-container">
-        Have an account?&nbsp;
-        <Link to="/sign-in">Sign In</Link>
+        {`Don't have an account? `}
+        <Link to="/sign-up">Sign Up</Link>
       </div>
     </div>
   );
 };
+
+SignInPage.propTypes = {};
 
 const mapStateToProps = state => ({
   errorMessage: state.customer.errorMessage,
@@ -96,8 +79,6 @@ const mapStateToProps = state => ({
 export default withRouter(
   connect(
     mapStateToProps,
-    {
-      registerUser
-    }
-  )(CSSModules(SignUpPage, styles))
+    { loginUser }
+  )(CSSModules(SignInPage, styles))
 );

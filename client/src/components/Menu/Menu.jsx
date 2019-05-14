@@ -1,17 +1,12 @@
 import styles from './Menu.scss';
 import FilterBox from '../FilterBox/FilterBox';
+import Link from '../../components/Link/Link';
 
-const Menu = ({
-  departmentsData,
-  filterOneBoxClicked,
-  categoriesData,
-  filterTwoBoxClicked,
-  handleHeaderClicked
-}) => (
+const Menu = ({ departmentsData, filterOneBoxClicked, categoriesData, filterTwoBoxClicked }) => (
   <div styleName="main-container">
-    <div role="presentation" onClick={handleHeaderClicked} styleName="header">
-      All products
-    </div>
+    <Link to="/products" styleName="header">
+      Products
+    </Link>
 
     <section styleName="filter-container">
       <FilterBox

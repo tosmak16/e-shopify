@@ -78,7 +78,6 @@ const ShopPage = props => {
           {...props}
           filterOneBoxClicked={handleGetCategoryIndepartment}
           filterTwoBoxClicked={handleGetProductInCategory}
-          handleHeaderClicked={getProducts}
         />
       </div>
       <div styleName="main-content">

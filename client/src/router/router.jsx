@@ -10,6 +10,7 @@ import ShopPage from '../pages/shop/ShopPage';
 import ProductDetails from '../pages/ProductDetails/ProductDetails';
 import CartPage from '../pages/CartPage/CartPage';
 import SignUpPage from '../pages/SignUpPage/SignUpPage';
+import SignInPage from '../pages/SignInPage/SignInPage';
 
 const AppContainer = (
   <Provider store={store}>
@@ -20,6 +21,7 @@ const AppContainer = (
           <WrappedRoute exact path="/products/:productId" component={<ProductDetails />} />
           <WrappedRoute exact path="/cart" component={<CartPage />} />
           <WrappedRoute exact path="/sign-up" component={<SignUpPage />} />
+          <WrappedRoute exact path="/sign-in" component={<SignInPage />} />
 
           <WrappedRoute exact path="/" component={<ShopPage />} />
         </Switch>

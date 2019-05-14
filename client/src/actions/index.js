@@ -17,7 +17,7 @@ import {
   getTotalAmountInCart
 } from './cart';
 
-import { registerUser } from './customer';
+import { registerUser, loginUser, logoutUser } from './customer';
 
 export {
   getProducts,
@@ -34,5 +34,7 @@ export {
   updateCart,
   removeProductFromCart,
   getTotalAmountInCart,
-  registerUser
+  registerUser,
+  loginUser,
+  logoutUser
 };

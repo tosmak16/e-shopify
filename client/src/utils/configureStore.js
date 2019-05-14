@@ -14,7 +14,7 @@ const history = createBrowserHistory();
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['cart'],
+  whitelist: ['cart', 'customer'],
   stateReconciler: autoMergeLevel2
 };
 const persistedReducer = persistReducer(persistConfig, rootReducer(history));
