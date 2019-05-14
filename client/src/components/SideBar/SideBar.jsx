@@ -10,7 +10,7 @@ const SideBar = props => {
     isLoggedIn
   } = props;
 
-  const inSignUpPage = pathname === '/sign-up';
+  const isLoginPage = pathname === '/sign-in';
 
   return (
     <div styleName="main-container">
@@ -28,9 +28,9 @@ const SideBar = props => {
             <i className="fas fa-shopping-cart" />
             <Link to="/cart">CART</Link>
           </li>
-          <li styleName={`side-menu__item ${pathname === '/checkout' ? 'active' : ''}`}>
+          <li styleName={`side-menu__item ${pathname === '/profile' ? 'active' : ''}`}>
             <i className="fas fa-money-check-alt" />
-            <Link to="/checkout">CHECKOUT</Link>
+            <Link to="/profile">PROFILE</Link>
           </li>
           {isLoggedIn && (
             <li styleName="side-menu__item">
@@ -39,14 +39,14 @@ const SideBar = props => {
             </li>
           )}
 
-          {!isLoggedIn && inSignUpPage && (
+          {!isLoggedIn && !isLoginPage && (
             <li styleName={`side-menu__item ${pathname === '/sign-in' ? 'active' : ''}`}>
               <i className="fas fa-sign-in-alt" />
               <Link to="/sign-in">SIGN IN</Link>
             </li>
           )}
 
-          {!isLoggedIn && !inSignUpPage && (
+          {!isLoggedIn && isLoginPage && (
             <li styleName={`side-menu__item ${pathname === '/sign-up' ? 'active' : ''}`}>
               <i className="fas fa-user-plus" />
               <Link to="/sign-up">SIGN UP</Link>

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import TextInput, { INPUT_TYPES } from '../TextInput/TextInput';
 
 const NameInput = props => {
@@ -12,18 +12,16 @@ const NameInput = props => {
     if (!value.length) {
       error = `${placeholder} can not be empty`;
     } else if (value.length < 2) {
-      error = `${placeholder} should at least be two characters`;
-    } else if (!/^[a-zA-Z '.-]*$/.test(value)) {
-      error = `${placeholder} is invalid`;
+      error = `${placeholder} should be more than one character`;
     } else {
       error = '';
     }
     return error;
   };
+  const { onChange, updatedName } = props;
 
   const inputChange = event => {
     const { placeholder, value } = event.target;
-    const { onChange } = props;
     const error = validateName(value, placeholder);
     // set state
     setName({ error, value });
@@ -32,6 +30,13 @@ const NameInput = props => {
   };
 
   const { value, error } = name;
+
+  useEffect(() => {
+    setName({
+      value: updatedName.value,
+      error: updatedName.error
+    });
+  }, [updatedName]);
 
   return (
     <div>
@@ -48,7 +53,15 @@ const NameInput = props => {
 };
 
 NameInput.propTypes = {
-  onChange: PropTypes.func.isRequired
+  onChange: PropTypes.func.isRequired,
+  updatedName: PropTypes.objectOf(PropTypes.any)
+};
+
+NameInput.defaultProps = {
+  updatedName: {
+    value: '',
+    error: ''
+  }
 };
 
 export default NameInput;

@@ -7,7 +7,10 @@ import {
   LOGIN_CUSTOMER_START,
   LOGIN_CUSTOMER_SUCCESS,
   LOGIN_CUSTOMER_FAIL,
-  LOGOUT_CUSTOMER
+  LOGOUT_CUSTOMER,
+  UPDATE_CUSTOMER_ADDRESS_FAIL,
+  UPDATE_CUSTOMER_ADDRESS_START,
+  UPDATE_CUSTOMER_ADDRESS_SUCCESS
 } from './types';
 
 export const registerUser = (custormerData, history) => async dispatch => {
@@ -48,4 +51,24 @@ export const loginUser = (custormerData, history) => async dispatch => {
 
 export const logoutUser = () => async dispatch => {
   dispatch({ type: LOGOUT_CUSTOMER });
+};
+
+export const updateAddress = (custormerData, accessToken) => async dispatch => {
+  dispatch({ type: UPDATE_CUSTOMER_ADDRESS_START });
+  try {
+    const response = await axios.put(`${process.env.api_url}customers/address`, custormerData, {
+      headers: {
+        'USER-KEY': accessToken
+      }
+    });
+    if (response.status === 200) {
+      const { data } = response;
+      return dispatch({
+        type: UPDATE_CUSTOMER_ADDRESS_SUCCESS,
+        data
+      });
+    }
+  } catch (error) {
+    dispatch({ type: UPDATE_CUSTOMER_ADDRESS_FAIL, data: error.response.data.error });
+  }
 };

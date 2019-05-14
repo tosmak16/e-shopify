@@ -7,6 +7,7 @@ import product from './product';
 import attributesInProduct from './attributesInProduct';
 import cart from './cart';
 import customer from './customer';
+import shippingRegion from './shippingRegion';
 
 // Reducers
 export default history =>
@@ -18,5 +19,6 @@ export default history =>
     attributesInProduct,
     cart,
     customer,
+    shippingRegion,
     router: connectRouter(history)
   });

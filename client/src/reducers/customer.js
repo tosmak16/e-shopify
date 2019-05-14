@@ -5,7 +5,10 @@ import {
   LOGIN_CUSTOMER_START,
   LOGIN_CUSTOMER_SUCCESS,
   LOGIN_CUSTOMER_FAIL,
-  LOGOUT_CUSTOMER
+  LOGOUT_CUSTOMER,
+  UPDATE_CUSTOMER_ADDRESS_FAIL,
+  UPDATE_CUSTOMER_ADDRESS_START,
+  UPDATE_CUSTOMER_ADDRESS_SUCCESS
 } from '../actions/types';
 
 export const initialState = {
@@ -68,6 +71,30 @@ export default (state = initialState, action) => {
 
     case LOGOUT_CUSTOMER:
       return initialState;
+
+    case UPDATE_CUSTOMER_ADDRESS_START:
+      return {
+        ...state,
+        isFetching: true,
+        errorMessage: '',
+        field: '',
+        isLoggedIn: false
+      };
+    case UPDATE_CUSTOMER_ADDRESS_SUCCESS:
+      return {
+        ...state,
+        data: { ...state.data, customer: action.data },
+        isFetching: false,
+        isLoggedIn: true
+      };
+    case UPDATE_CUSTOMER_ADDRESS_FAIL:
+      return {
+        ...state,
+        isFetching: false,
+        errorMessage: action.data.message,
+        field: action.data.field,
+        isLoggedIn: false
+      };
 
     default:
       return state;

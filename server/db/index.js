@@ -79,6 +79,9 @@ Product.hasMany(Review, { foreignKey: 'product_id' });
 Review.belongsTo(Customer, { foreignKey: 'customer_id' });
 Customer.hasMany(Review, { foreignKey: 'customer_id' });
 
+Shipping.belongsTo(ShippingRegion, { foreignKey: 'shipping_region_id' });
+ShippingRegion.hasMany(Shipping, { foreignKey: 'shipping_region_id' });
+
 dbConnect.sync();
 
 export {
