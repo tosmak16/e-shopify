@@ -64,7 +64,7 @@ const SignInPage = props => {
       </div>
       <div styleName="sign-in-link-container">
         {`Don't have an account? `}
-        <Link to="/sign-up">Sign Up</Link>
+        <Link to="/app/sign-up">Sign Up</Link>
       </div>
       <FacebookLogin
         appId={process.env.FACEBOOK_APP_ID}

@@ -83,7 +83,7 @@ const SignUpPage = props => {
       </div>
       <div styleName="sign-in-link-container">
         Have an account?&nbsp;
-        <Link to="/sign-in">Sign In</Link>
+        <Link to="/app/sign-in">Sign In</Link>
       </div>
       <FacebookLogin
         appId={process.env.FACEBOOK_APP_ID}

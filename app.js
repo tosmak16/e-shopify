@@ -25,12 +25,12 @@ app.use(bodyParser.json());
 app.use(validator());
 app.use(passport.initialize());
 
+app.use('', routes);
+
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(BUILD_DIR));
-  app.get('/app/*', (req, res) => res.sendFile(HTML_FILE));
+  app.get('*', (req, res) => res.sendFile(HTML_FILE));
 }
-
-app.use('', routes);
 
 app.listen(PORT, () => {
   console.log(`Running on port ${(PORT, process.env.NODE_ENV)}`);

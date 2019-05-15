@@ -24,8 +24,7 @@ const AppContainer = (
           <WrappedRoute exact path="/app/sign-up" component={<SignUpPage />} />
           <WrappedRoute exact path="/app/sign-in" component={<SignInPage />} />
           <WrappedRoute requiresAuth exact path="/app/profile" component={<ProfilePage />} />
-
-          <WrappedRoute exact path="/" component={<ShopPage />} />
+          <WrappedRoute path="/" component={<ShopPage />} />
         </Switch>
       </ConnectedRouter>
     </PersistGate>
