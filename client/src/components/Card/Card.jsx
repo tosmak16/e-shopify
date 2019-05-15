@@ -32,7 +32,7 @@ const Card = ({ image, name, price, description, productId, thumbnail }) => {
           <div styleName="card__size-box">
             <p styleName="card__size">{description || 'description'}</p>
           </div>
-          <Link to={`products/${productId}`} styleName="btn">
+          <Link to={`/app/products/${productId}`} styleName="btn">
             View details
           </Link>
         </div>
