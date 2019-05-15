@@ -26,6 +26,17 @@ It consists of the following features:
 - Users can checkout with Stripe.
 - Users gets confirmations over emails about their orders.
 
+
+## Technology
+**e-shopify** makes use of a host of modern technologies. The core ones are:
+- [JavaScript](https://www.javascript.com/)
+- [React](https://facebook.github.io/react/)
+- [Redux](http://redux.js.org/)
+- [NodeJs](https://nodejs.org)
+- [Express](http://expressjs.com/)
+- [Mysql](https://www.mysql.com)
+- [Sequelize ORM](http://docs.sequelizejs.com/en/v3/)
+
 ## Installation
 
 - Install [NodeJs](https://nodejs.org/en/) and [Mysql](https://www.mysql.com) on your machine
