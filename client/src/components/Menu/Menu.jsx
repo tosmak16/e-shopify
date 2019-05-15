@@ -4,7 +4,7 @@ import Link from '../../components/Link/Link';
 
 const Menu = ({ departmentsData, filterOneBoxClicked, categoriesData, filterTwoBoxClicked }) => (
   <div styleName="main-container">
-    <Link to="/products" styleName="header">
+    <Link to="/app/products" styleName="header">
       Products
     </Link>
 

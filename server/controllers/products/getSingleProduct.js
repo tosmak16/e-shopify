@@ -1,7 +1,19 @@
 import ProductService from '../../services/database/ProductService';
+import CacheService from '../../services/DataCache/CacheService';
+
+const cache = new CacheService(); // Create a new cache service instance
 
 const getSingleProduct = async (req, res) => {
-  const product = await ProductService.findById(req.params.id);
+  const { id } = req.params;
+  let product;
+  const cacheKey = `${id}getSingleProduct`;
+  const cachedProduct = await cache.get(cacheKey);
+
+  if (cachedProduct !== null) {
+    product = cachedProduct;
+  } else {
+    product = await ProductService.findById(id);
+  }
 
   if (product === null) {
     return res.status(400).send({
@@ -13,6 +25,8 @@ const getSingleProduct = async (req, res) => {
       }
     });
   }
+  cache.set(cacheKey, product);
+
   return res.status(200).send(product);
 };
 
