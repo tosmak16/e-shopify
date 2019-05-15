@@ -1,6 +1,6 @@
 import styles from './Nav.scss';
 
-const Nav = () => (
+const Nav = ({ handleClick }) => (
   <nav styleName="nav" className="navbar navbar-dark bg-dark">
     <button
       className="navbar-toggler"
@@ -11,7 +11,7 @@ const Nav = () => (
       aria-expanded="false"
       aria-label="Toggle navigation"
     >
-      <span className="navbar-toggler-icon" />
+      <span role="presentation" onClick={handleClick} className="navbar-toggler-icon" />
     </button>
   </nav>
 );

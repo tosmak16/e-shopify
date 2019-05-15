@@ -17,8 +17,9 @@ import {
   getTotalAmountInCart
 } from './cart';
 
-import { registerUser, loginUser, logoutUser, updateAddress } from './customer';
+import { registerUser, loginUser, logoutUser, updateAddress, facebookLogin } from './customer';
 import { getShippingRegions, getShippingRegionsWithCost } from './shippingRegion';
+import { orderProduct, chargeCustormer } from './order';
 
 export {
   getProducts,
@@ -40,5 +41,8 @@ export {
   logoutUser,
   getShippingRegions,
   getShippingRegionsWithCost,
-  updateAddress
+  updateAddress,
+  orderProduct,
+  chargeCustormer,
+  facebookLogin
 };

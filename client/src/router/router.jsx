@@ -23,7 +23,7 @@ const AppContainer = (
           <WrappedRoute exact path="/cart" component={<CartPage />} />
           <WrappedRoute exact path="/sign-up" component={<SignUpPage />} />
           <WrappedRoute exact path="/sign-in" component={<SignInPage />} />
-          <WrappedRoute exact path="/profile" component={<ProfilePage />} />
+          <WrappedRoute requiresAuth exact path="/profile" component={<ProfilePage />} />
 
           <WrappedRoute exact path="/" component={<ShopPage />} />
         </Switch>

@@ -43,7 +43,7 @@ const ProductTile = props => {
     <div styleName="product-details-wrapper">
       <Tile>
         <div styleName="content-wrapper">
-          <p styleName="price">{`$${price}`}</p>
+          <p styleName="price">{`$${price || 0}`}</p>
           <p styleName="name">{name}</p>
           <p styleName="description">{description}</p>
           <input

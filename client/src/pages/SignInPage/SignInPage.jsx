@@ -2,13 +2,14 @@ import PropTypes from 'prop-types';
 import { withRouter } from 'react-router';
 import { connect } from 'react-redux';
 import { useEffect, useState } from 'react';
+import FacebookLogin from 'react-facebook-login';
 
 import styles from './SignInPage.scss';
 import Button from '../../components/Button/Button';
 import Link from '../../components/Link/Link';
 import EmailInput from '../../components/EmailInput/EmailInput';
 import PasswordInput from '../../components/PasswordInput/PasswordInput';
-import { loginUser } from '../../actions';
+import { loginUser, facebookLogin } from '../../actions';
 
 const initialData = {
   value: '',
@@ -21,7 +22,7 @@ const SignInPage = props => {
 
   const isFormValid = email.isValid && password.isValid;
 
-  const { loginUser, errorMessage, errorField, history } = props;
+  const { loginUser, errorMessage, errorField, history, facebookLogin } = props;
 
   const handleLoginUser = () =>
     isFormValid ? loginUser({ email: email.value, password: password.value }, history) : '';
@@ -65,6 +66,13 @@ const SignInPage = props => {
         {`Don't have an account? `}
         <Link to="/sign-up">Sign Up</Link>
       </div>
+      <FacebookLogin
+        appId={process.env.FACEBOOK_APP_ID}
+        autoLoad={false}
+        fields="name"
+        textButton="FACEBOOK"
+        callback={({ accessToken }) => facebookLogin({ access_token: accessToken }, history)}
+      />
     </div>
   );
 };
@@ -79,6 +87,6 @@ const mapStateToProps = state => ({
 export default withRouter(
   connect(
     mapStateToProps,
-    { loginUser }
+    { loginUser, facebookLogin }
   )(CSSModules(SignInPage, styles))
 );

@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { isEmpty } from 'lodash';
+import { withRouter } from 'react-router';
 
 import styles from './CartPage.scss';
 import Table from '../../components/Table/Table';
@@ -14,6 +15,8 @@ import {
   getTotalAmountInCart
 } from '../../actions';
 
+import { noItem } from '../../assets/icons';
+
 const CartPage = props => {
   const [productsInCart, setProductInCart] = useState([]);
 
@@ -22,11 +25,12 @@ const CartPage = props => {
     productsInCartData: { cartItemList, cart_id, totalAmout },
     updateCart,
     removeProductFromCart,
-    getTotalAmountInCart
+    getTotalAmountInCart,
+    history
   } = props;
 
   useEffect(() => {
-    if (isEmpty(productsInCart)) {
+    if (isEmpty(productsInCart) && cart_id) {
       getProductsInCart(cart_id);
     }
     getTotalAmountInCart(cart_id);
@@ -44,20 +48,23 @@ const CartPage = props => {
           />
         )}
       </div>
-      <div styleName="total-checkout-container">
-        <Tile>
-          <div styleName="checkout-content">
-            <h2>Cart Total</h2>
-            <div styleName="total-wrapper">
-              <span>Total</span>
-              <span styleName="total-amount-text">{`$${totalAmout}`}</span>
+      {!isEmpty(productsInCart) && (
+        <div styleName="total-checkout-container">
+          <Tile>
+            <div styleName="checkout-content">
+              <h2>Cart Total</h2>
+              <div styleName="total-wrapper">
+                <span>Total</span>
+                <span styleName="total-amount-text">{`$${totalAmout}`}</span>
+              </div>
+              <div styleName="button-wrapper">
+                <Button onClick={() => history.push('/profile')}>Checkout</Button>
+              </div>
             </div>
-            <div styleName="button-wrapper">
-              <Button onClick={() => {}}>Checkout</Button>
-            </div>
-          </div>
-        </Tile>
-      </div>
+          </Tile>
+        </div>
+      )}
+      {isEmpty(productsInCart) && <img src={noItem} alt="noItem" />}
     </div>
   );
 };
@@ -68,7 +75,9 @@ const mapStateToProps = state => ({
   productsInCartData: state.cart.data
 });
 
-export default connect(
-  mapStateToProps,
-  { getProductsInCart, updateCart, removeProductFromCart, getTotalAmountInCart }
-)(CSSModules(CartPage, styles));
+export default withRouter(
+  connect(
+    mapStateToProps,
+    { getProductsInCart, updateCart, removeProductFromCart, getTotalAmountInCart }
+  )(CSSModules(CartPage, styles))
+);

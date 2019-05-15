@@ -1,0 +1,79 @@
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(#000, .1);
+    height: 100%;
+    width: 100%;
+    display: flex;
+    z-index: 2000;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.circle {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-gap: 20px;
+}
+
+.ball {
+    display: block;
+    height: 20px;
+    width: 20px;
+    background-image: linear-gradient(180deg, white 0%, orange 50%, orange 50%);
+    border-radius: 50%;
+    border: 1px solid orange;
+    top: 0px;
+
+    &:nth-child(1) {
+        left: 40px;
+        animation: bounce 2s linear infinite;
+    }
+
+    &:nth-child(2) {
+        left: 80px;
+        animation: bounce 2s linear 0.3s infinite;
+    }
+
+    &:nth-child(3) {
+        left: 120px;
+        animation: bounce 2s linear 0.4s infinite;
+    }
+}
+
+
+
+@keyframes bounce {
+    0% {
+        transform: translateY(0px);
+    }
+
+    25% {
+        transform: translateY(-50px);
+    }
+
+    50% {
+        transform: translateY(0px);
+    }
+
+    75% {
+        transform: translateY(-50px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+
+@keyframes spin {
+    0% {
+        transform: rotate(0);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}

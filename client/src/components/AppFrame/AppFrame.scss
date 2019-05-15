@@ -1,3 +1,5 @@
+@import '~variables';
+
 .main-container {
     display: grid;
     grid-template-columns: 280px auto;
@@ -13,27 +15,39 @@
 .sidebar-container {
     display: grid;
     padding: 0 0;
-    transform: translateX(0px);
     height: 100%;
     background: #fff;
     transition: all .2s cubic-bezier(.25, .25, .25, 1);
     border-radius: 4px;
     box-shadow: 0 0px 0px rgba(0, 0, 0, 0), 0 1px 2px rgba(0, 0, 0, 0.24);
-
+    transition: all .3s;
 
 
     @media (max-width: 730px) {
-        transform: translateX(0px);
         z-index: 100;
         width: 230px;
         position: absolute;
         background-color: white;
         height: 100%;
-        display: none;
     }
 }
 
 .main-content {
     display: block;
 
+}
+
+.show {
+    display: block;
+
+    @media (max-width: $mobile-width) {
+        transform: translateX(0px);
+
+    }
+}
+
+.hide {
+    @media (max-width: $mobile-width) {
+        transform: translateX(-500px);
+    }
 }

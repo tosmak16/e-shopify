@@ -16,7 +16,8 @@ export const initialState = {
   isFetching: false,
   errorMessage: '',
   field: '',
-  isLoggedIn: false
+  isLoggedIn: false,
+  shippingId: ''
 };
 
 export default (state = initialState, action) => {

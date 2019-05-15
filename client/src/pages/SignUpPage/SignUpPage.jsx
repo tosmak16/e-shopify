@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
+import FacebookLogin from 'react-facebook-login';
 
 import styles from './SignUpPage.scss';
 import Button from '../../components/Button/Button';
@@ -9,7 +10,7 @@ import Link from '../../components/Link/Link';
 import NameInput from '../../components/NameInput/NameInput';
 import EmailInput from '../../components/EmailInput/EmailInput';
 import PasswordInput from '../../components/PasswordInput/PasswordInput';
-import { registerUser } from '../../actions';
+import { registerUser, facebookLogin } from '../../actions';
 
 const initialData = {
   value: '',
@@ -22,7 +23,7 @@ const SignUpPage = props => {
   const [email, setEmail] = useState(initialData);
   const [password, setPassword] = useState({ ...initialData, passwordStrength: 'weak' });
 
-  const { registerUser, errorMessage, errorField, history } = props;
+  const { registerUser, errorMessage, errorField, history, facebookLogin } = props;
 
   useEffect(() => {
     if (errorField === 'email') {
@@ -84,6 +85,13 @@ const SignUpPage = props => {
         Have an account?&nbsp;
         <Link to="/sign-in">Sign In</Link>
       </div>
+      <FacebookLogin
+        appId={process.env.FACEBOOK_APP_ID}
+        autoLoad={false}
+        fields="name"
+        textButton="FACEBOOK"
+        callback={({ accessToken }) => facebookLogin({ access_token: accessToken }, history)}
+      />
     </div>
   );
 };
@@ -97,7 +105,8 @@ export default withRouter(
   connect(
     mapStateToProps,
     {
-      registerUser
+      registerUser,
+      facebookLogin
     }
   )(CSSModules(SignUpPage, styles))
 );

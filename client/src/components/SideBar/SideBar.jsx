@@ -3,11 +3,13 @@ import { connect } from 'react-redux';
 
 import styles from './SideBar.scss';
 import Link from '../Link/Link';
+import { tshirtshop } from '../../assets/images';
 
 const SideBar = props => {
   const {
     location: { pathname },
-    isLoggedIn
+    isLoggedIn,
+    handleLogOut
   } = props;
 
   const isLoginPage = pathname === '/sign-in';
@@ -15,7 +17,9 @@ const SideBar = props => {
   return (
     <div styleName="main-container">
       <section>
-        <div>Logo</div>
+        <div>
+          <img styleName="logo" src={tshirtshop} alt="tshirtshop" />
+        </div>
       </section>
 
       <section styleName="side-menu">
@@ -28,14 +32,18 @@ const SideBar = props => {
             <i className="fas fa-shopping-cart" />
             <Link to="/cart">CART</Link>
           </li>
-          <li styleName={`side-menu__item ${pathname === '/profile' ? 'active' : ''}`}>
-            <i className="fas fa-money-check-alt" />
-            <Link to="/profile">PROFILE</Link>
-          </li>
+          {isLoggedIn && (
+            <li styleName={`side-menu__item ${pathname === '/profile' ? 'active' : ''}`}>
+              <i className="fas fa-money-check-alt" />
+              <Link to="/profile">PROFILE</Link>
+            </li>
+          )}
           {isLoggedIn && (
             <li styleName="side-menu__item">
               <i className="fas fa-sign-out-alt" />
-              <Link to="/sign-in">LOGOUT</Link>
+              <span onClick={handleLogOut} styleName="link">
+                LOGOUT
+              </span>
             </li>
           )}
 

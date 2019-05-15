@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { isEmpty } from 'lodash';
 import { withRouter } from 'react-router';
+import { useAlert } from 'react-alert';
 
 import styles from './ProductDetails.scss';
 import ImageSlider from '../../components/ImageSlider/ImageSlider';
@@ -32,10 +33,15 @@ const ProductDetails = props => {
   const [selectedAttributes, setSelectedAttributes] = useState({ size: '', color: '' });
   const [quantity, setQuantity] = useState(1);
 
+  const alert = useAlert();
+
   const addProductColor = color => setSelectedAttributes({ ...selectedAttributes, color });
 
   const addProductSize = size => setSelectedAttributes({ ...selectedAttributes, size });
   const addProductToCart = () => {
+    if (isEmpty(selectedAttributes.color) || isEmpty(selectedAttributes.size)) {
+      return alert.error('Please select Size and Color');
+    }
     const addToCartData = {
       productId,
       attributes: `${selectedAttributes.color} ${selectedAttributes.size}`,

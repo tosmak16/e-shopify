@@ -25,6 +25,12 @@
     letter-spacing: -1px;
     font-family: $main-font;
     margin: 20px 0px;
+    display: grid;
+    grid-template-columns: 200px 200px;
+    width: 100%;
+    grid-gap: 20px;
+    justify-content: space-between;
+
 }
 
 .sign-in-link-container {
@@ -67,4 +73,13 @@
         padding: 20px 5px 10px 5px;
         margin: 0;
     }
+}
+
+.payment-container {
+    padding: 10%;
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.06), 0 1px 1px rgba(0, 0, 0, 0.06);
+    border-radius: 4px;
+    transition: all .2s cubic-bezier(.25, .25, .25, 1);
+    height: 100%;
+
 }

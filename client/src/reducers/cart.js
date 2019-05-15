@@ -16,7 +16,8 @@ import {
   REMOVE_PRODUCT_IN_CART_START,
   GET_TOTAL_AMOUNT_IN_CART_FAIL,
   GET_TOTAL_AMOUNT_IN_CART_START,
-  GET_TOTAL_AMOUNT_IN_CART_SUCCESS
+  GET_TOTAL_AMOUNT_IN_CART_SUCCESS,
+  CHARGE_CUSTOMER_SUCCESS
 } from '../actions/types';
 
 import removeProductInCartHandler from '../utils/removeProductInCartHandler';
@@ -120,7 +121,9 @@ export default (state = initialState, action) => {
         ...state,
         data: {
           ...state.data,
-          cartItemList: removeProductInCartHandler(state, action.data)
+          cartItemList: removeProductInCartHandler(state, action.data),
+          cart_id:
+            removeProductInCartHandler(state, action.data).length === 0 ? null : state.data.cart_id
         },
         isLoading: false
       };
@@ -152,6 +155,9 @@ export default (state = initialState, action) => {
         isLoading: false,
         errorMessage: action.errorMessage
       };
+
+    case CHARGE_CUSTOMER_SUCCESS:
+      return initialState;
 
     default:
       return state;

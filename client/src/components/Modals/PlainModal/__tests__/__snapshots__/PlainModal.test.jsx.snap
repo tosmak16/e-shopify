@@ -1,0 +1,56 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PlainModal renders with close icon 1`] = `
+<div
+  className="modal modal--hidden"
+  id="modal"
+  onClick={[Function]}
+  role="presentation"
+>
+  <div
+    className="modal__container"
+    id="modal__container"
+  >
+    <div
+      className="modal__close-icon"
+      onClick={[Function]}
+      role="presentation"
+    >
+      <img
+        alt="Close"
+        src="test-file-stub"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`PlainModal renders with modal--visible class when shouldModalBeVisible is true 1`] = `
+<div
+  className="modal modal--visible"
+  id="modal"
+  onClick={[Function]}
+  role="presentation"
+>
+  <div
+    className="modal__container"
+    id="modal__container"
+  />
+</div>
+`;
+
+exports[`PlainModal renders without close icon 1`] = `
+<div
+  className="modal modal--hidden"
+  id="modal"
+  onClick={[Function]}
+  role="presentation"
+>
+  <div
+    className="modal__container"
+    id="modal__container"
+  >
+    hello
+  </div>
+</div>
+`;

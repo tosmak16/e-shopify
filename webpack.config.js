@@ -130,7 +130,9 @@ const common = {
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify(process.env.NODE_ENV),
-        api_url: JSON.stringify(process.env.api_url)
+        api_url: JSON.stringify(process.env.api_url),
+        stripe_publish_key: JSON.stringify(process.env.STRIP_PUBLIC_KEY),
+        FACEBOOK_APP_ID: JSON.stringify(process.env.FACEBOOK_APP_ID)
       }
     })
   ],

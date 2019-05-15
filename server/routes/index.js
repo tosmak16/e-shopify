@@ -167,6 +167,11 @@ router.get('/orders/:id', tokenAuthMiddleware, getOrders);
 router.get('/orders/shortDetail/:id', tokenAuthMiddleware, getInfoAboutOrder);
 
 // ********* */ Stripe routes ************ //
-router.post('/stripe/charge', validateStripeChargeCustomerData, chargeCustomer);
+router.post(
+  '/stripe/charge',
+  tokenAuthMiddleware,
+  validateStripeChargeCustomerData,
+  chargeCustomer
+);
 
 export default router;

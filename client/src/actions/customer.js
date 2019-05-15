@@ -49,8 +49,11 @@ export const loginUser = (custormerData, history) => async dispatch => {
   }
 };
 
-export const logoutUser = () => async dispatch => {
+export const logoutUser = history => async dispatch => {
   dispatch({ type: LOGOUT_CUSTOMER });
+  if (history) {
+    return history.push('/sign-in');
+  }
 };
 
 export const updateAddress = (custormerData, accessToken) => async dispatch => {
@@ -70,5 +73,23 @@ export const updateAddress = (custormerData, accessToken) => async dispatch => {
     }
   } catch (error) {
     dispatch({ type: UPDATE_CUSTOMER_ADDRESS_FAIL, data: error.response.data.error });
+  }
+};
+
+export const facebookLogin = (custormerData, history) => async dispatch => {
+  dispatch({ type: LOGIN_CUSTOMER_START });
+  try {
+    const response = await axios.post(`${process.env.api_url}customers/facebook`, custormerData);
+    if (response.status === 200) {
+      const { data } = response;
+      dispatch({
+        type: LOGIN_CUSTOMER_SUCCESS,
+        data
+      });
+
+      return history.push('/products');
+    }
+  } catch (error) {
+    dispatch({ type: LOGIN_CUSTOMER_FAIL, data: error.response.data.error });
   }
 };

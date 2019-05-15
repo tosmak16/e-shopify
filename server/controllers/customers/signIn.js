@@ -32,8 +32,8 @@ const signIn = async (req, res) => {
       }
     });
   }
-  const { customer_id } = fetchedCustomer;
-  const token = handleGenerateToken({ customer_id });
+  const { customer_id, name } = fetchedCustomer;
+  const token = handleGenerateToken({ customer_id, email, name });
   const customer = normalizeCustomerData(fetchedCustomer);
   const { TOKEN_EXPIRE } = process.env;
 
