@@ -24,7 +24,7 @@ export const registerUser = (custormerData, history) => async dispatch => {
         data
       });
 
-      return history.push('/products');
+      return history.push('/app/products');
     }
   } catch (error) {
     dispatch({ type: REGISTER_CUSTOMER_FAIL, data: error.response.data.error });
@@ -42,7 +42,7 @@ export const loginUser = (custormerData, history) => async dispatch => {
         data
       });
 
-      return history.push('/products');
+      return history.push('/app/products');
     }
   } catch (error) {
     dispatch({ type: LOGIN_CUSTOMER_FAIL, data: error.response.data.error });
@@ -52,7 +52,7 @@ export const loginUser = (custormerData, history) => async dispatch => {
 export const logoutUser = history => async dispatch => {
   dispatch({ type: LOGOUT_CUSTOMER });
   if (history) {
-    return history.push('/sign-in');
+    return history.push('/app/sign-in');
   }
 };
 
@@ -87,7 +87,7 @@ export const facebookLogin = (custormerData, history) => async dispatch => {
         data
       });
 
-      return history.push('/products');
+      return history.push('/app/products');
     }
   } catch (error) {
     dispatch({ type: LOGIN_CUSTOMER_FAIL, data: error.response.data.error });

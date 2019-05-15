@@ -34,7 +34,7 @@ export const updateCart = (quantity, itemId, history) => async dispatch => {
         data
       });
 
-      return history ? history.push('/cart') : null;
+      return history ? history.push('/app/cart') : null;
     }
   } catch (error) {
     dispatch({ type: UPDATE_CART_FAIL, data: error.response.data.message });
@@ -72,7 +72,7 @@ export const addToCart = ({
       });
 
       if (!isQuantityMoreThanOne) {
-        return history.push('/cart');
+        return history.push('/app/cart');
       }
     }
   } catch (error) {

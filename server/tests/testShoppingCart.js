@@ -113,7 +113,7 @@ describe('Shoppingcart tests', () => {
       .get(`/shoppingcart/totalAmount/${addCartData.cart_id}`)
       .end((err, res) => {
         res.should.have.status(200);
-        expect(res.body.total_amount).to.equal(29.98);
+        expect(res.body.total_amount).to.equal('29.98');
         done();
       });
   });

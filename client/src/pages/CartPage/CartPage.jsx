@@ -58,7 +58,7 @@ const CartPage = props => {
                 <span styleName="total-amount-text">{`$${totalAmout}`}</span>
               </div>
               <div styleName="button-wrapper">
-                <Button onClick={() => history.push('/profile')}>Checkout</Button>
+                <Button onClick={() => history.push('/app/profile')}>Checkout</Button>
               </div>
             </div>
           </Tile>

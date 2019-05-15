@@ -26,16 +26,16 @@ const SideBar = props => {
         <ul styleName="side-menu__list">
           <li styleName={`side-menu__item ${pathname === '/products' ? 'active' : ''}`}>
             <i className="fas fa-store" />
-            <Link to="/products">SHOP</Link>
+            <Link to="/app/products">SHOP</Link>
           </li>
           <li styleName={`side-menu__item ${pathname === '/cart' ? 'active' : ''}`}>
             <i className="fas fa-shopping-cart" />
-            <Link to="/cart">CART</Link>
+            <Link to="/app/cart">CART</Link>
           </li>
           {isLoggedIn && (
             <li styleName={`side-menu__item ${pathname === '/profile' ? 'active' : ''}`}>
               <i className="fas fa-money-check-alt" />
-              <Link to="/profile">PROFILE</Link>
+              <Link to="/app/profile">PROFILE</Link>
             </li>
           )}
           {isLoggedIn && (
@@ -50,14 +50,14 @@ const SideBar = props => {
           {!isLoggedIn && !isLoginPage && (
             <li styleName={`side-menu__item ${pathname === '/sign-in' ? 'active' : ''}`}>
               <i className="fas fa-sign-in-alt" />
-              <Link to="/sign-in">SIGN IN</Link>
+              <Link to="/app/sign-in">SIGN IN</Link>
             </li>
           )}
 
           {!isLoggedIn && isLoginPage && (
             <li styleName={`side-menu__item ${pathname === '/sign-up' ? 'active' : ''}`}>
               <i className="fas fa-user-plus" />
-              <Link to="/sign-up">SIGN UP</Link>
+              <Link to="/app/sign-up">SIGN UP</Link>
             </li>
           )}
         </ul>

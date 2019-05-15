@@ -35,15 +35,4 @@ describe('Shipping tests', () => {
         done();
       });
   });
-
-  it('should get a single shipping region successfully', done => {
-    chai
-      .request(server)
-      .get('/shipping/regions/2')
-      .end((err, res) => {
-        res.should.have.status(200);
-        expect(res.body.shipping_region_id).to.equal(2);
-        done();
-      });
-  });
 });

@@ -4,9 +4,10 @@
   "description": "An e-commerce system which allows users to search, add items to their shopping cart, create order and checkout successfully.",
   "main": "app.js",
   "scripts": {
+    "heroku-postbuild": "NODE_ENV=production npm run build",
     "test": " NODE_ENV=testing babel-node ./node_modules/mocha/bin/_mocha server/tests/**.js --exit ",
     "server": "babel-node app.js",
-    "start": "webpack-dev-server --host 0.0.0.0 --watch",
+    "start": "NODE_ENV=production babel-node ./app.js ",
     "build": "webpack",
     "start:prod": "babel-node app.js"
   },

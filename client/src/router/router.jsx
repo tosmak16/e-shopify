@@ -18,12 +18,12 @@ const AppContainer = (
     <PersistGate loading={null} persistor={persistor}>
       <ConnectedRouter history={history}>
         <Switch>
-          <WrappedRoute exact path="/products" component={<ShopPage />} />
-          <WrappedRoute exact path="/products/:productId" component={<ProductDetails />} />
-          <WrappedRoute exact path="/cart" component={<CartPage />} />
-          <WrappedRoute exact path="/sign-up" component={<SignUpPage />} />
-          <WrappedRoute exact path="/sign-in" component={<SignInPage />} />
-          <WrappedRoute requiresAuth exact path="/profile" component={<ProfilePage />} />
+          <WrappedRoute exact path="/app/products" component={<ShopPage />} />
+          <WrappedRoute exact path="/app/products/:productId" component={<ProductDetails />} />
+          <WrappedRoute exact path="/app/cart" component={<CartPage />} />
+          <WrappedRoute exact path="/app/sign-up" component={<SignUpPage />} />
+          <WrappedRoute exact path="/app/sign-in" component={<SignInPage />} />
+          <WrappedRoute requiresAuth exact path="/app/profile" component={<ProfilePage />} />
 
           <WrappedRoute exact path="/" component={<ShopPage />} />
         </Switch>

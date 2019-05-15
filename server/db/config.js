@@ -14,6 +14,16 @@ const db_config = {
     logging: false
   },
 
+  production: {
+    database: process.env.DB_NAME,
+    username: process.env.DB_USERNAME,
+    password: process.env.DB_PASSWORD,
+    host: process.env.DB_HOST,
+    timestamps: false,
+    dialect: process.env.DB_DIALECT,
+    logging: false
+  },
+
   testing: {
     database: process.env.DB_NAME_TEST,
     username: process.env.DB_USERNAME_TEST,
