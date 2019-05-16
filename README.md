@@ -7,6 +7,7 @@ An e-commerce system which allows users to search, add items to their shopping c
 - [Features](#features)
 - [API-DOCUMENTATION](#API-DOCUMENTATION)
 - [Technologies](#technology)
+- [Architecture](#Architecture)
 - [Installation](#installation)
 - [Testing](#testing)
 - [Contribution](#contribution)
@@ -39,6 +40,31 @@ Check out the API docs at [e-shopify](https://eshopify.docs.apiary.io/#)
 - [Express](http://expressjs.com/)
 - [Mysql](https://www.mysql.com)
 - [Sequelize ORM](http://docs.sequelizejs.com/en/v3/)
+
+## Architecture
+It below is the Application backend Database Design and Architecture
+
+The App uses a Monolith Architecture because the app is composed in one piece. 
+It contains layers below
+
+Authorization — responsible for authorizing a user
+
+Presentation — responsible for handling HTTP requests and responding with either HTML or JSON/XML (for web services APIs).
+
+Business logic — the application’s business logic. The application business logic are all on the backend so to avoid repetition while integrating other clients if need be.
+
+Database layer — data access objects responsible for accessing the database.
+
+Application integration — integration with other services (Facebook and Stripe).
+
+Notification module — responsible for sending email notifications whenever needed.
+
+Caching Module - responsible for caching.
+
+![](dbdesign.png)
+
+
+
 
 ## Installation
 
