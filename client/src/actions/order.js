@@ -26,7 +26,7 @@ export const chargeCustormer = (paymentData, accessToken, alert) => async dispat
       });
     }
   } catch (error) {
-    dispatch({ type: CHARGE_CUSTOMER_FAIL, data: error.response.data.message });
+    dispatch({ type: CHARGE_CUSTOMER_FAIL, errorMessage: error.response.data.error.message });
   }
 };
 
@@ -77,7 +77,7 @@ export const orderProduct = ({
       });
     }
   } catch (error) {
-    dispatch({ type: ORDER_PRODUCT_FAIL, data: error.response.data.message });
+    dispatch({ type: ORDER_PRODUCT_FAIL, errorMessage: error.response.data.message });
   }
 };
 

@@ -45,7 +45,7 @@ const ProfilePage = props => {
     totalAmoutInCart,
     orderProduct,
     cartItemList,
-    orderCompleted
+    errorMessage
   } = props;
 
   const { shippingRegion, shippingType, name, address, region, city, country, zipCode } = profile;
@@ -127,6 +127,12 @@ const ProfilePage = props => {
       getShippingRegionsWithCost(customerProfile.shipping_region_id);
     }
   }, [shippingRegionData]);
+
+  useEffect(() => {
+    if (errorMessage.length > 0) {
+      alert.error('Your card was declined.');
+    }
+  }, [errorMessage]);
 
   return (
     <div styleName="main-container">
@@ -262,7 +268,7 @@ const mapStateToProps = state => ({
   cart_id: state.cart.data.cart_id,
   totalAmoutInCart: state.cart.data.totalAmout,
   cartItemList: state.cart.data.cartItemList,
-  orderCompleted: state.order.orderCompleted
+  errorMessage: state.order.errorMessage
 });
 
 export default withRouter(
