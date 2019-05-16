@@ -5,6 +5,7 @@ An e-commerce system which allows users to search, add items to their shopping c
 ## Table of Contents
 
 - [Features](#features)
+- [API-DOCUMENTATION](#API-DOCUMENTATION)
 - [Technologies](#technology)
 - [Installation](#installation)
 - [Testing](#testing)
@@ -26,6 +27,8 @@ It consists of the following features:
 - Users can checkout with Stripe.
 - Users gets confirmations over emails about their orders.
 
+## API-DOCUMENTATION
+Check out the API docs at [e-shopify](https://eshopify.docs.apiary.io/#)
 
 ## Technology
 **e-shopify** makes use of a host of modern technologies. The core ones are:
